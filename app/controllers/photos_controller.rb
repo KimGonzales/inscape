@@ -21,6 +21,18 @@ class PhotosController < ApplicationController
         end
     end
 
+
+    def edit
+    end
+
+    def update
+        if @photo.update(photo_params)
+            redirect_to @photo, notice: "Your photo was successfully updated!"
+        else
+            render :edit
+        end
+    end
+
     private
     
         def photo_params
