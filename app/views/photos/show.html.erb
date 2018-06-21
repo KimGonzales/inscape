@@ -1,6 +1,7 @@
 <h1><%= @photo.title %></h1>
 
 <p><%= @photo.description %></p>
+<p>Photo by <%= @photo.user.email %></p>
 
 <%= link_to "Back", root_path %>
 <%= link_to "Edit", edit_photo_path %>
