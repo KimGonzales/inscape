@@ -33,6 +33,12 @@ class PhotosController < ApplicationController
         end
     end
 
+    def destroy
+        @photo.destroy
+        redirect_to root_path, notice: "Your photo was successfully deleted."
+    end
+    
+
     private
     
         def photo_params
