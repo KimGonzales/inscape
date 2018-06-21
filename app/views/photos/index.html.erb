@@ -1,13 +1,12 @@
 <div class="col-md-6 col-md-offset-3">
-	<div id="photos" class="transitions-enabled">
+	<div id=photos class="transitions-enabled">
 
 		<% @photos.each do |photo| %>
 				<div class="box panel panel-default">
-					<%= link_to (image_tag photo.image.url(:medium)), photo %>
+					<%= link_to (image_tag photo.image.url), photo %>
 					<h2><%= link_to photo.title, photo %></h2>
 				</div>
 			<% end %>
 
 	</div>
 </div >
-
