@@ -1,0 +1,5 @@
+<h1>Photos Feed</h1>
+
+<% @photos.each do |photo| %>
+    <h2><%= link_to photo.title, photo %></h2>
+    <% end %>
