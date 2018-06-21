@@ -1,5 +1,6 @@
 <h1><%= @photo.title %></h1>
 
+<p><%= image_tag @photo.image.url(:medium) %></p>
 <p><%= @photo.description %></p>
 <p>Photo by <%= @photo.user.email %></p>
 
