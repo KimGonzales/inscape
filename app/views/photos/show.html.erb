@@ -1,9 +1,35 @@
-<h1><%= @photo.title %></h1>
+<div id="photo_show" class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-default">
 
-<p><%= image_tag @photo.image.url(:medium) %></p>
-<p><%= @photo.description %></p>
-<p>Photo by <%= @photo.user.email %></p>
+			<div class= "panel heading photo_image">
+				<%= image_tag @photo.image.url(:medium) %>
+			</div>
 
-<%= link_to "Back", root_path %>
-<%= link_to "Edit", edit_photo_path %>
-<%= link_to "Delete", photo_path, method: :delete, data: { confirm: "Are you sure?"} %>
+			<div class="panel-body">
+				<h1><%= @photo.title %></h1>
+				<p><%= @photo.description %></p>
+			</div>
+
+			<div class="panel-footer">
+				<div class="row">
+
+					<div class="col-md-6">
+						<p class="user">by <%= @photo.user.email%></p>
+					</div>
+
+					<div class="col-md-6">
+						<div class="btn-group pull-right">
+							<% if user_signed_in? %>
+								<%= link_to "Back", root_path %>
+								<%= link_to "Edit", edit_photo_path %>
+								<%= link_to "Delete", photo_path, method: :delete, data: { confirm: "Are you sure?"} %>
+							<% end %>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
