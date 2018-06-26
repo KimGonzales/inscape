@@ -6,3 +6,11 @@ $ ->
     $('#photos').masonry
       itemSelector: '.box'
       isFitWidth: true
+
+
+$ ->
+  $('#profile-photos').imagesLoaded ->
+    $('#profile-photos').masonry
+      itemSelector: '.box'
+      isAnimated: !Modernizr.csstransitions,
+      isRTL: true
