@@ -2,10 +2,15 @@ class PhotosController < ApplicationController
     before_action :find_photo, only: [:show, :edit, :update, :destroy]
     
     def index
-        @photos = Photo.all.order("created_at DESC")
+        @user = User.find_by(id: params[:user_id])
+        if @user
+            @photos = @user.photos.order("created_at DESC")
+        else
+            @photos = Photo.all.order("created_at DESC")
+        end
     end
 
-    def show 
+    def show
     end
 
     def new

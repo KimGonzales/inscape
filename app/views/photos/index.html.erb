@@ -1,13 +1,14 @@
-<div class="col-md-6 col-md-offset-3">
-	<div id=photos class="transitions-enabled">
+	<div class="col-md-6 col-md-offset-3">
+		<div id="photos" class="transitions-enabled">
 
-		<% @photos.each do |photo| %>
-				<div class="box panel panel-default">
-					<%= link_to (image_tag photo.image.url), photo %>
-					<h2><%= link_to photo.title, photo %></h2>
-					<p><%= time_ago_in_words(photo.created_at)%> ago</p>
-				</div>
-			<% end %>
+			<% @photos.each do |photo| %>
+					<div class="box panel panel-default">
+						<%= link_to (image_tag photo.image.url), photo %>
+						<h2><%= link_to photo.title, photo %></h2>
+						<p><%= time_ago_in_words(photo.created_at)%> ago</p>
+					</div>
+				<% end %>
 
-	</div>
-</div >
+		</div>
+	</div >
+

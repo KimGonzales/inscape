@@ -11,13 +11,14 @@
 
   <body>
 
-    <nav class="navbar navbar navbar-default">
+    <nav class="navbar navbar navbar-inverse">
       <div class="container">
         <div class="navbar-brand">
           <%= link_to "Inscape", root_path %>
         </div>
           <% if user_signed_in? %>
             <ul class="nav navbar-nav navar-left">
+              <li><%= link_to "Profile", user_photos_path(current_user) %></li>
               <li><%= link_to "Add Photo", new_photo_path %></li>
               <li><%= link_to "Settings", edit_user_registration_path %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
@@ -34,7 +35,7 @@
     </nav>
 
     <div class="container">
-    
+
       <% unless flash.empty? %>
         <% flash.each do |name, msg| %>
           <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-info" %>
