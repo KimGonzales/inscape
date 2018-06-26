@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
     before_action :find_photo, only: [:show, :edit, :update, :destroy]
     
     def index
-        @photos = Photo.all
+        @photos = Photo.all.order("created_at DESC")
     end
 
     def show 
@@ -34,8 +34,12 @@ class PhotosController < ApplicationController
     end
 
     def destroy
-        @photo.destroy
-        redirect_to root_path, notice: "Your photo was successfully deleted."
+        if current_user.photos.include?(@photo)
+            @photo.destroy
+            redirect_to root_path, notice: "Your photo was successfully deleted."
+        else
+            redirect_to @photo, notice: "You do not have permissions to delete this photo."
+        end
     end
     
 
