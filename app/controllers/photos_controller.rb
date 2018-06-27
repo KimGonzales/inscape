@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
     def index
         @user = User.find_by(id: params[:user_id])
         if @user
-            @photos = @user.photos
+            @photos = @user.photos.order("created_at ASC")
         else
             @photos = Photo.all.order("created_at DESC")
         end
