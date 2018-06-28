@@ -1,4 +1,5 @@
 <%= simple_form_for @profile do |f| %>
+
 	<% if @profile.errors.any? %>
 		<h2 id="form-group"><%= pluralize(@profile.errors.count, "error")%> prevented this Photo from saving</h2>
 		<ul>
@@ -7,6 +8,7 @@
 			<% end %>
 		</ul>
 	<% end %>
+
 	<%= f.input :bio, input_html: { class: 'form-control'} %>
 	<%= f.button :submit, class: 'btn btn-info'%>
 <% end %>
