@@ -6,9 +6,12 @@
 	<h3><%= @profile.user.username %><br>
 		<% if current_user.profile == @profile %>
 			<small><%= @profile.bio %></small><br>
-			<button type="button" class="btn btn-secondary btn-sm"><%= link_to "Edit Bio", edit_profile_path %></button>
+				<button type="button" class="btn btn-secondary btn-xs"><%= link_to "Edit Bio", edit_profile_path %></button>
+				<button type="button" class="btn btn-secondary btn-xs"><%= link_to "Every Moment", profile_photos_path(@profile) %></button>
+				<button type="button" class="btn btn-secondary btn-xs"><%= link_to "Add Moment", new_profile_photo_path(@profile) %></button>
 		<% else %>
 			<small><%= @profile.bio %></small><br>
+			<button type="button" class="btn btn-secondary btn-sm"><%= link_to "Every Moment", profile_photos_path(@profile) %></button>
 		<% end %>
 	</h3>
 </div>
@@ -16,7 +19,8 @@
 <div class="col-md-12">
 	<div id="photos" class="rtl">
 
-		<% @photos.each do |photo| %>
+		<h5>Latest Moments</h5>
+		<% @photos.limit(3).each do |photo| %>
 			<div class="box panel panel-default">
 				<%= link_to (image_tag photo.image.url), photo %>
 				<h2><%= link_to photo.title, photo %></h2>
