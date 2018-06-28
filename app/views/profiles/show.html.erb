@@ -1,13 +1,26 @@
+<% if current_user.profile == @profile && @profile.photos.empty? %>
+	<h3> <%= link_to "Add the first photo to your profile!", new_profile_photo_path(@profile)%> </h3>
+<% end%>
+
+<div class="page-header">
+	<h1><%= @profile.user.email %><br>
+		<% if current_user.profile == @profile %>
+			<small><%= @profile.bio %></small><br>
+			<small class="btn btn-default"><%= link_to "Edit Bio", edit_profile_path %></small>
+		<% else %>
+			<small><%= @profile.bio %></small><br>
+		<% end %>
+	</div>
 <div class="col-md-12">
-				<div id="photos" class="rtl">
+	<div id="photos" class="rtl">
 
-					<% @photos.each do |photo| %>
-							<div class="box panel panel-default">
-								<%= link_to (image_tag photo.image.url), photo %>
-								<h2><%= link_to photo.title, photo %></h2>
-								<p><%= time_ago_in_words(photo.created_at)%> ago</p>
-							</div>
-						<% end %>
+		<% @photos.each do |photo| %>
+			<div class="box panel panel-default">
+				<%= link_to (image_tag photo.image.url), photo %>
+				<h2><%= link_to photo.title, photo %></h2>
+				<p><%= time_ago_in_words(photo.created_at)%> ago</p>
+			</div>
+		<% end %>
 
-				</div>
-			</div >
+	</div>
+</div >

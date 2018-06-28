@@ -15,7 +15,7 @@
 				<div class="row">
 
 					<div class="col-md-6">
-						<p class="user">by <%= @photo.user.email %></p>
+						<p class="user">by <%= link_to @photo.user.email, profile_path(@photo.profile) %></p>
 					</div>
 
 					<div class="col-md-6">

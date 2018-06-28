@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :photos
   root 'photos#index'
   
-  resources :profiles, only: [:show] do
+  resources :profiles, only: [:show, :edit, :update] do
     resources :photos, only: [:new, :create, :index, :show, :edit, :update]
   end 
 
