@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
 	end
 
 	def edit
+		@photos = @profile.photos
 	end
 
 	def update

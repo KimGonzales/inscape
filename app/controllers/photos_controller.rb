@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
 			@photos = Photo.all.order("created_at DESC")
 		else
 			@profile = Profile.find_by(id: params[:profile_id])
-			@photos = @profile.photos
+			@photos = @profile.photos.order("created_at DESC")
 		end
 	end
 
