@@ -6,7 +6,7 @@
 	<h3><%= @profile.user.username %><br>
 		<% if current_user.profile == @profile %>
 			<small><%= @profile.bio %></small><br>
-			<small class="btn btn-default"><%= link_to "Edit Bio", edit_profile_path %></small>
+			<button type="button" class="btn btn-secondary btn-sm"><%= link_to "Edit Bio", edit_profile_path %></button>
 		<% else %>
 			<small><%= @profile.bio %></small><br>
 		<% end %>
