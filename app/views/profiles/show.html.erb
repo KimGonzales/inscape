@@ -3,14 +3,16 @@
 <% end%>
 
 <div class="page-header">
-	<h1><%= @profile.user.email %><br>
+	<h3><%= @profile.user.username %><br>
 		<% if current_user.profile == @profile %>
 			<small><%= @profile.bio %></small><br>
 			<small class="btn btn-default"><%= link_to "Edit Bio", edit_profile_path %></small>
 		<% else %>
 			<small><%= @profile.bio %></small><br>
 		<% end %>
-	</div>
+	</h3>
+</div>
+
 <div class="col-md-12">
 	<div id="photos" class="rtl">
 
