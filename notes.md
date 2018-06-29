@@ -14,6 +14,6 @@ TO DO
     - [ ] 
     - [ ] 
 
-- [ ]
+- [ ]JS masonry is not working. Look up using imagesloaded with masonry
 - [ ]
 - [ ]
