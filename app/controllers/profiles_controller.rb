@@ -28,4 +28,5 @@ class ProfilesController < ApplicationController
 			params.require(:profile).permit(:bio)
 		end
 
+
 end 

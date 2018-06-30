@@ -31,7 +31,10 @@ class PhotosController < ApplicationController
 	end
 
 	def update
-		if @photo.update(photo_params)
+		if !params[:profile_id].nil? && @photo.update(photo_params)
+			@profile = Profile.find_by(id: params[:profile_id])
+			redirect_to @profile, notice: "Your profile was successfully updated!"
+		elsif @photo.update(photo_params)
 			redirect_to @photo, notice: "Your photo was successfully updated!"
 		else
 			render :edit
@@ -51,7 +54,7 @@ class PhotosController < ApplicationController
 	private
 	
 		def photo_params
-			params.require(:photo).permit(:title, :description, :image)
+			params.require(:photo).permit(:title, :description, :image, :featured_status)
 		end
 
 		def find_photo

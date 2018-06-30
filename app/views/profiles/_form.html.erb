@@ -10,8 +10,23 @@
 	<% end %>
 
 	<%= f.input :bio, input_html: { class: 'form-control'} %>
-
-	<%= f.button :submit, class: 'btn btn-info'%>
-
+	<%= f.button :submit, value: "Update Bio", class: 'btn btn-info'%>
 <% end %>
 
+	<section class="main">
+
+			<label>Featured Profile Photos</label>
+	
+			<% @profile.photos.each do |photo| %>
+				<div class="<%= 'featured' if photo.featured? %>">
+					<div class="view">
+						<%= form_for ([@profile, photo]) do |f| %>
+							<%= f.check_box :featured_status, :class => "toggle", :checked => (true if photo.featured?) %>
+							<%= f.submit %>
+							<% end %>
+							<label><%= photo.myPhoto %></label>
+					</div>
+				</div>
+				<% end %>
+		
+	</section>

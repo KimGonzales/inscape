@@ -18,4 +18,8 @@ class Photo < ApplicationRecord
 		self.featured_status == FEATURED_STATUS[:not_featured]
 	end
 
+	def myPhoto
+		ActionController::Base.helpers.image_tag("#{image.url(:thumb)}")
+	end
+
 end
