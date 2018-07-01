@@ -1,17 +1,14 @@
 <%= simple_form_for @profile do |f| %>
+  <%= f.input :bio, input_html: { class: 'form-control'} %>
 
-	<% if @profile.errors.any? %>
-		<h2 id="form-group"><%= pluralize(@profile.errors.count, "error")%> prevented this Photo from saving</h2>
-		<ul>
-			<% @profile.errors.each do | msg | %>
-			<li><%= msg %> </li>
-			<% end %>
-		</ul>
-	<% end %>
+  <section class="main">
+    <label>Featured Profile Photos</label>
 
-	<%= f.input :bio, input_html: { class: 'form-control'} %>
+    <%= f.simple_fields_for :photos do |ff| %>
+      <%= ff.check_box :featured_status %>
+      <label><%= ff.object.myPhoto %></label>
+    <% end %>
+  </section>
 
-	<%= f.button :submit, class: 'btn btn-info'%>
-
+  <%= f.button :submit %>
 <% end %>
-

@@ -19,13 +19,13 @@ class ProfilesController < ApplicationController
 	end
 
 	private
-	
+
 		def set_profile
 			@profile = Profile.find_by(id: params[:id])
 		end
 
 		def profile_params
-			params.require(:profile).permit(:bio)
+			params.require(:profile).permit(:bio, photos_attributes: [:id, :featured_status])
 		end
 
-end 
+end
