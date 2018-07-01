@@ -31,10 +31,7 @@ class PhotosController < ApplicationController
 	end
 
 	def update
-		if !params[:profile_id].nil? && @photo.update(photo_params)
-			@profile = Profile.find_by(id: params[:profile_id])
-			redirect_to @profile, notice: "Your profile was successfully updated!"
-		elsif @photo.update(photo_params)
+		if @photo.update(photo_params)
 			redirect_to @photo, notice: "Your photo was successfully updated!"
 		else
 			render :edit

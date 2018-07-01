@@ -2,7 +2,7 @@
 	<% if @photo.errors.any? %>
 		<h2 id="form-group"><%= pluralize(@photo.errors.count, "error")%> prevented this Photo from saving</h2>
 		<ul>
-			<% @photo.errors.each do | msg | %>
+			<% @photo.errors.full_messages.each do | msg | %>
 			<li><%= msg %> </li>
 			<% end %>
 		</ul>

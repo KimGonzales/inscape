@@ -7,11 +7,10 @@ class ProfilesController < ApplicationController
 	end
 
 	def edit
-		@photos = @profile.photos
+		@photos = @profile.user.photos
 	end
 
 	def update
-		raise params.inspect
 		if @profile.update(profile_params)
 			redirect_to @profile
 		else
@@ -26,8 +25,7 @@ class ProfilesController < ApplicationController
 		end
 
 		def profile_params
-			params.require(:profile).permit(:bio, photos_attributes:[][:featured_status])
+			params.require(:profile).permit(:bio, photos_attributes:[:featured_status])
 		end
-
 
 end 
