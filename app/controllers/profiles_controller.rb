@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
 	before_action :set_profile, only: [:show, :edit, :update]
 
 	def show
-		@photos = @profile.photos.order('created_at DESC')
+		@photos = @profile.user.photos.order('created_at DESC')
 		#when refactoring think of making a photos partial to place in your photos index view
 	end
 
@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
 	private
 	
 		def set_profile
-			@profile = Profile.find_by(id: params[:id])
+			@profile = Profile.find(params[:id])
 		end
 
 		def profile_params
