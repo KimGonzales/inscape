@@ -22,5 +22,4 @@ class Photo < ApplicationRecord
 	def myPhoto
 		ActionController::Base.helpers.image_tag("#{image.url(:thumb)}")
 	end
-
 end
