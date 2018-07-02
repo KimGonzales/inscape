@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
 		end
 
 		def profile_params
-			params.require(:profile).permit(:bio, photos_attributes:[id:, :featured_status])
+			params.require(:profile).permit(:bio, photos_attributes:[:id, :featured_status])
 		end
 
 end 
