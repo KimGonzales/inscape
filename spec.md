@@ -6,7 +6,7 @@ Specs:
 - [x] Include at least one belongs_to relationship : A Photo belongs to a User
 - [x] Include at least one has_many through relationship : A Profile has many Photos through User
 - [x] The "through" part of the has_many through includes at least one user submittable attribute. User can submit profile bio and change #featured_status of its photos. 
-- [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+- [X] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 - [x] Include signup :  with Devise
 - [x] Include login : with Devise
