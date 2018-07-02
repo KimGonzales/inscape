@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :find_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy]
     
 	def index
 		if params[:profile_id].nil?
@@ -51,11 +51,11 @@ class PhotosController < ApplicationController
 	private
 	
 		def photo_params
-			params.require(:photo).permit(:title, :description, :image)
+			params.require(:photo).permit(:title, :description, :image, :featured_status)
 		end
 
-		def find_photo
-			@photo = Photo.find(params[:id])
+		def set_photo
+			@photo = Photo.find_by(id: params[:id])
 		end
 
 end
