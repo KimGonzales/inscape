@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :photos
-  has_one :profile
+  has_many :photos, dependent: :destroy
+  has_one :profile, dependent: :destroy 
 
   after_create :create_profile
  
