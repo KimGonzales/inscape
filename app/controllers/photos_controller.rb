@@ -1,14 +1,14 @@
 class PhotosController < ApplicationController
-	before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
-	def index
-		if params[:profile_id].nil?
-			@photos = Photo.all.order("created_at DESC")
-		else
-			@profile = Profile.find_by(id: params[:profile_id])
-			@photos = @profile.photos.order("created_at DESC")
-			end
-	end
+  def index
+    if params[:profile_id].nil?
+      @photos = Photo.all.order("created_at DESC")
+    else
+      @profile = Profile.find_by(id: params[:profile_id])
+      @photos = @profile.photos.order("created_at DESC")
+    end
+  end
 
 def show
 end
