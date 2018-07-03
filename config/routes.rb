@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :photos, only: [:new, :create, :index, :show, :edit, :update]
   end
 
-  get 'best-photo', to: 'photos#best'
+  get 'best-photo', to: 'photos#best', as: 'best'
 
 end
