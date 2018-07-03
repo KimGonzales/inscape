@@ -31,4 +31,4 @@
 
 .env
 .package.json
-/.vscode/settings.json
+settings.json
