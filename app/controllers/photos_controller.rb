@@ -60,6 +60,6 @@ class PhotosController < ApplicationController
 
     def set_photo
       @photo = Photo.find_by(id: params[:id])
-  end
+    end
 
 end

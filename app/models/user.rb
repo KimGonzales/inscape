@@ -15,8 +15,8 @@ class User < ApplicationRecord
      end      
     end
 
-    def username
-      self.email.gsub(/(@)(.*?)$/, "").capitalize
-    end 
+  def username
+    self.email.gsub(/(@)(.*?)$/, "").capitalize
+  end 
     
 end

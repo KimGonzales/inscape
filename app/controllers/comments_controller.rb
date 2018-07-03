@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :set_photo
 
   def index
-  
   end
 
   def create
@@ -22,6 +21,7 @@ class CommentsController < ApplicationController
   end
 
   private
+  
     def comment_params
       params.require(:comment).permit(:content)
     end
@@ -29,4 +29,5 @@ class CommentsController < ApplicationController
     def set_photo
       @photo = Photo.find(params[:photo_id])
     end
+
 end
