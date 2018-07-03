@@ -22,6 +22,14 @@ class Photo < ApplicationRecord
 
 	def myPhoto
 		ActionController::Base.helpers.image_tag("#{image.url(:thumb)}")
-	end
+  end
+  
+  def self.photos_by_comment_count
+    Photo.joins(:comments).select("photos.*, count(comments.id) as ccount").group('photos.id').order("ccount DESC").limit(1)
+  end
+
+  def self.best_photo
+    Photo.photos_by_comment_count.first
+  end
 
 end
