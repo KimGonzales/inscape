@@ -30,5 +30,5 @@
 /config/master.key
 
 .env
-.package.json
+package.json
 settings.json
