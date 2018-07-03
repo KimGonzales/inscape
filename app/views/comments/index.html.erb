@@ -21,7 +21,7 @@
 					<div class="col-md-6">
 						<div class="btn-group pull-right xs">
 							<% if user_signed_in? && current_user.photos.include?(@photo) %>
-								<%= link_to "Comment", photo_comments_path(@photo), class: "btn btn-info" %>
+								<%= link_to "Comment", new_photo_comment_path(@photo), class: "btn btn-info" %>
 								<%= link_to "Edit", edit_photo_path, class: "btn btn-info" %>
 								<%= link_to "Delete", photo_path, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
 							<% else %>
@@ -34,4 +34,13 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="comments">
+	<h2><%= @photo.comments.count %> Comments</h2>
+	<%= render @photo.comments %>
+	<h3>Join Disscussion: </h3>
+	<%= render "form"%>
+</div>
+
 </div>
