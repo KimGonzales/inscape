@@ -1,0 +1,12 @@
+<%= simple_form_for ([@photo, @photo.comments.build]) do |f| %>
+  <p>
+    <%= f.label :comment %>
+    <%= f.input :content, :class => 'form-control' %>
+  </p>
+  <br>
+  
+  <p>
+    <%= f.submit :class => 'btn btn-info'%>
+  </p>
+
+  <% end %>
