@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
 
 	def show
 		@photos = @profile.user.photos.order('created_at DESC')
-		#when refactoring think of making a photos partial to place in your photos index view
 	end
 
 	def edit
