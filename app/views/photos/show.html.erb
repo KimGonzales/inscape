@@ -25,7 +25,7 @@
 								<%= link_to "Edit", edit_photo_path, class: "btn btn-info" %>
 								<%= link_to "Delete", photo_path, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
 							<% else %>
-								<%= link_to "Comment", new_photo_comment_path(@photo), class: "btn btn-info" %>
+								<%= link_to "Comment", photo_comments_path(@photo), class: "btn btn-info" %>
 							<% end %>
 						</div>
 					</div>
