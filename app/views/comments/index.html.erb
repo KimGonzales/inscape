@@ -9,23 +9,16 @@
 			<div class="panel-body">
 				<h1><%= @photo.title %></h1>
 				<p><%= @photo.description %></p>
+        <p class="user">by <%= link_to @photo.user.email, profile_path(@photo.user.profile) %></p>
 			</div>
 
 			<div class="panel-footer">
 				<div class="row">
-
-					<div class="col-md-6">
-						<p class="user">by <%= link_to @photo.user.email, profile_path(@photo.user.profile) %></p>
-					</div>
-
-					<div class="col-md-6">
 						<div class="comments">
 							<h2><%= @photo.comments.count %> Comments</h2>
 							<%= render @photo.comments %>
 							<h3>Join Disscussion: </h3>
 							<%= render "form"%>
-						</div>
-
 						</div>
 					</div>
 

@@ -1,11 +1,9 @@
-<div class="comments">
-  <div class="comment_body">
+
     <p class="comment_user"><%= comment.user.username %> wrote:</p>
     <p class="comment_content"><%= comment.content %></p>
     <p class="comment_time"><%= time_ago_in_words(comment.created_at) %> Ago</p>
-  </div>
+
 
   <% if comment.user_id == current_user.id %>
     <p><%= link_to 'Delete', [comment.photo, comment], method: :delete, class: "button", data: {confirm: 'Are you sure?'}%></p>
   <% end %>
-</div>

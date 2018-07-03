@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment = @photo.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.save!
-    redirect_to photo_path(@photo)
+    redirect_to photo_comments_path(@photo)
   end
   
   def destroy
