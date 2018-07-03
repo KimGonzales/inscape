@@ -79,6 +79,11 @@ nav {
 	}
 }
 
+.comment_time {
+  font-size: 10px;
+  color: gray;
+}
+
 #edit_page {
 	.current_image {
 		img {
@@ -132,4 +137,9 @@ nav {
 
 textarea {
 	min-height: 250px;
+}
+
+.comments {
+  padding-right: 30px;
+  padding-left: 30px;
 }

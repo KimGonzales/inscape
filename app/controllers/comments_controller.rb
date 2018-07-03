@@ -1,14 +1,18 @@
 class CommentsController < ApplicationController
   before_action :set_photo
 
-  def index 
-  end
+  def index
   
+  end
+
   def create
     @comment = @photo.comments.build(comment_params)
     @comment.user_id = current_user.id
-    @comment.save!
-    redirect_to photo_comments_path(@photo)
+    if @comment.save!
+      redirect_to photo_comments_path(@photo)
+    else 
+      render 'index'
+    end
   end
   
   def destroy

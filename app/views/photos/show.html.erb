@@ -20,7 +20,7 @@
 					</div>
 
 					<div class="col-md-6">
-						<div class="btn-group pull-right xs">
+						<div class="btn-group pull-right">
 							<% if user_signed_in? && current_user.photos.include?(@photo) %>
 								<%= link_to "Edit", edit_photo_path, class: "btn btn-info" %>
 								<%= link_to "Delete", photo_path, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
