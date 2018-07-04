@@ -8,9 +8,11 @@ Users are encouraged to upload photos that aim to inspire mindfulness, innovatio
 The Photo with the most ammount of comments is considered the top photo at said time.
 
 ## Installation 
-$ bundle install
-$ rake db:migrate
-$ rake db:seed
+ `bundle install`
+
+`rake db:migrate`
+
+`rake db:seed`
 
 ## Contributing
 
