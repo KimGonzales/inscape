@@ -10,6 +10,7 @@ The Photo with the most ammount of comments is considered the top photo at said 
 ## Installation 
 
 Fork and clone this repository.
+
 In terminal: 
  `bundle install`
 
