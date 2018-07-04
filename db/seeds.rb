@@ -27,3 +27,6 @@ sally.photos.create!(:title =>"Naptime", :description => "Kogi whatever swag meh
 
 john.profile.update!(bio: "Umami kogi iPhone actually, put a bird on it chartreuse leggings knausgaard. Coloring book hammock jianbing cloud bread man bun.")
 sally.profile.update!(bio: "Master cleanse chartreuse tacos pour-over raw denim gentrify hoodie sriracha 3 wolf moon biodiesel post-ironic.")
+
+sally.photos.first.comments.create!(content:"Great Photo!", user_id: 1)
+sally.photos.first.comments.create!(content:"thank you!", user_id: 2)
