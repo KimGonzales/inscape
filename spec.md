@@ -7,7 +7,7 @@ Specs:
 - [x] Include at least one has_many through relationship : A Profile has many Photos through User
 - [x] The "through" part of the has_many through includes at least one user submittable attribute. User can submit profile bio and change #featured_status of its photos. 
 - [X] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [X] Include a class level ActiveRecord scope method (Photo model has best_photo. see at /best-photo)
 - [x] Include signup :  with Devise
 - [x] Include login : with Devise
 - [x] Include logout : with Devise
@@ -17,7 +17,7 @@ Specs:
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate
