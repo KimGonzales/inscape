@@ -47,9 +47,9 @@ class PhotosController < ApplicationController
     end
   end
 
-  def best
-    @best_photo = Photo.best_photo
-    redirect_to @best_photo
+  def top
+    @top_photo = Photo.top_photo
+    redirect_to @top_photo
   end
 
   private

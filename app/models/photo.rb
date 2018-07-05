@@ -25,10 +25,10 @@ class Photo < ApplicationRecord
   end
   
   def self.photos_by_comment_count
-    Photo.joins(:comments).select("photos.*, count(comments.id) as ccount").group('photos.id').order("ccount DESC").limit(1)
+    Photo.joins(:comments).select("photos.*, count(comments.id) as ccount").group('photos.id').order("ccount DESC")
   end
 
-  def self.best_photo
+  def self.top_photo
     Photo.photos_by_comment_count.first
   end
 
