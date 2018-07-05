@@ -21,7 +21,7 @@
         <div class="box panel panel-default">
           <%= link_to (image_tag photo.image.url), photo_path(photo) %>
           <h2><%= link_to photo.title, photo %></h2>
-          <p><%= time_ago_in_words(photo.created_at)%> ago</p>
+          <p><%= photo_date(photo) %></p>
         </div>
       <% end %>
     <% end %>
