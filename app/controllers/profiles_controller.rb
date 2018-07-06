@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def show
-    @photos = @profile.user.photos.order('created_at DESC')
+    @photos = @profile.photos.order('created_at DESC')
   end
 
   def edit
@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
   private
   
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = Profile.find_by(id: params[:id])
     end
 
     def profile_params
