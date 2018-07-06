@@ -1,19 +1,30 @@
-<%= simple_form_for [@photo, @comment] do |f| %>
+<div id="edit_page">
+  <div class="row">
+    <div class ="col-md-7 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1>Edit Comment </h1>
 
-  <% if @comment.errors.any? %>
-    <h2 id="form-group"><%= pluralize(@comment.errors.count, "error") %> prevented your comment from saving</h2>
-    <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    </ul>
-  <% end %>
+            <div class="panel-body">
+                <%= simple_form_for [@photo, @comment] do |f| %>
+                  <% if @comment.errors.any? %>
+                    <h2 id="form-group"><%= pluralize(@comment.errors.count, "error") %> prevented your comment from saving</h2>
+                    <ul>
+                      <% @comment.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                  <% end %>
+                  <p><%= f.input :content, label: 'Your Comment', :class => 'form-control' %></p><br>
+                  <p class="btn-group">
+                    <%= f.submit :class => 'btn btn-info'%>
+                    <%= link_to "Go Back", @photo, :class => 'btn btn-default' %>
+                  </p>
+                <% end %>
+            </div>
 
-  <p><%= f.input :content, label: 'Your Comment', :class => 'form-control' %></p><br>
-  
-  <p class="btn-group">
-    <%= f.submit :class => 'btn btn-info'%>
-    <%= link_to "Go Back", @photo, :class => 'btn btn-default' %>
-  </p>
-
-  <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
