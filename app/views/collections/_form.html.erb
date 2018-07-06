@@ -1,0 +1,4 @@
+<%= simple_form_for @collection, url: photo_collections_path do |f| %>
+  <%= f.input :name, class: 'form-control'%>
+  <%= f.button :submit, value: "Collect", class:'btn'%>
+<% end %>
