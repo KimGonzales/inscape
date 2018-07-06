@@ -19,26 +19,24 @@
               <h2><%= @photo.comments.count %> Comments</h2>
 
                 <% @photo.comments.each do |comment| %>
-                  <%if !comment.id.nil? %>
+                  <% if !comment.id.nil? %>
                     <%= render comment %>
-                  <% else comment.errors.any? %>
+                  <% else %>
                     <h2 id="form-group"><%= pluralize(comment.errors.count, "error") %> prevented this comment from saving</h2>
-                      <ul>
-                      <% comment.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                        <% end %>
-                      </ul>
-                     <% end %>
-
+                    <ul>
+                    <% comment.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                      <% end %>
+                    </ul>
                   <% end %>
-                <%# <%= render @photo.comments %>
+                <% end %>
+          
                 <h3>Join Disscussion: </h3>
-                <%= render "form"%>
+                <%= render "form" %>
             </div>
          
         </div>
       </div>
-
 
     </div>
   </div>
