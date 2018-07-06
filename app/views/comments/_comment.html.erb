@@ -4,6 +4,7 @@
 <div class="comment_time">Posted <%= time_ago_in_words(comment.created_at)%> ago
 
   <% if comment.user == current_user %>
+    <%= link_to "Edit", edit_photo_comment_path(comment.photo, comment) %> |
     <%= link_to 'Delete', [comment.photo, comment], method: :delete, data: {confirm: 'Are you sure?'}%>
   <% end %>
 </div><br>
