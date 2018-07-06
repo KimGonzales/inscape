@@ -17,7 +17,21 @@
          
             <div class="comments">
               <h2><%= @photo.comments.count %> Comments</h2>
-                <%= render @photo.comments %>
+
+                <% @photo.comments.each do |comment| %>
+                  <%if !comment.id.nil? %>
+                    <%= render comment %>
+                  <% else comment.errors.any? %>
+                    <h2 id="form-group"><%= pluralize(comment.errors.count, "error") %> prevented this comment from saving</h2>
+                      <ul>
+                      <% comment.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                     <% end %>
+
+                  <% end %>
+                <%# <%= render @photo.comments %>
                 <h3>Join Disscussion: </h3>
                 <%= render "form"%>
             </div>

@@ -1,4 +1,4 @@
-<%= simple_form_for@photo do |f| %>
+<%= simple_form_for @photo do |f| %>
   <% if @photo.errors.any? %>
     <h2 id="form-group"><%= pluralize(@photo.errors.count, "error")%> prevented this Photo from saving</h2>
     <ul>

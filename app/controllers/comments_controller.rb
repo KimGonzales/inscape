@@ -5,12 +5,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @photo.comments.build(comment_params)
-    @comment.user = current_user
+    comment = @photo.comments.build(comment_params)
+    comment.user = current_user
     
-    if @comment.save
-      redirect_to photo_comments_path(@photo)
-    else 
+    if comment.save
+      redirect_to photo_comments_path(comment.photo)
+    else
       render 'index'
     end
   end
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     end
 
     def set_photo
-      @photo = Photo.find(params[:photo_id])
+      @photo = Photo.find_by(id: params[:photo_id])
     end
 
 end
