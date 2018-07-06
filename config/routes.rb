@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'photos#index'
   
   resources :profiles, only: [:show, :edit, :update] do
-    resources :photos, only: [:new, :create, :index, :show, :edit, :update]
+    resources :photos 
   end
 
   get 'top-photo', to: 'photos#top', as: 'top'

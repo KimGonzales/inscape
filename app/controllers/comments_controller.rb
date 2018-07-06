@@ -6,8 +6,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @photo.comments.build(comment_params)
-    @comment.user_id = current_user.id
-    if @comment.save!
+    @comment.user = current_user
+    
+    if @comment.save
       redirect_to photo_comments_path(@photo)
     else 
       render 'index'
