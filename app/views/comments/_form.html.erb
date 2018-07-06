@@ -1,11 +1,9 @@
 <%= simple_form_for ([@photo, @photo.comments.build]) do |f| %>
-  <p>
-    <%= f.input :content, label: 'Your Comment', placeholder:"What's on your mind?", :class => 'form-control' %>
-  </p>
-  <br>
+  <p><%= f.input :content, label: 'Your Comment', placeholder:"What's on your mind?", :class => 'form-control' %></p><br>
   
-  <p>
+  <p class="btn-group">
     <%= f.submit :class => 'btn btn-info'%>
+    <%= link_to "Go Back", @photo, :class => 'btn btn-default' %>
   </p>
 
   <% end %>
