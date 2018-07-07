@@ -18,6 +18,6 @@ Rails.application.routes.draw do
     resources :collections
   end
   
-  get 'collections/:id', to: 'collections#show', as: :collection
+  resources :collections
   
 end

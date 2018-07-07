@@ -1,0 +1,8 @@
+<% @collections.each do |collection| %>
+  <h1><%= link_to collection.name, collection %></h1>
+    <% collection.photos.each do |photo|%>
+      <div class="photo">
+      <%= link_to photo.myPhoto, photo %>
+      </div>
+    <% end %>
+  <% end %>

@@ -2,4 +2,5 @@
   <%= link_to (image_tag photo.image.url), photo %>
   <h2><%= link_to photo.title, photo %></h2>
   <p><%= time_ago_in_words(photo.created_at)%> ago</p>
+  <%= link_to "Remove from collection", photo_collection_path(photo, @collection), method: :delete, data: { confirm: "Are you sure?"} %>
 </div>
