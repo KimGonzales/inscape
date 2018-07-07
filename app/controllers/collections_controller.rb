@@ -31,8 +31,10 @@ class CollectionsController < ApplicationController
   end
 
 private 
-  def set_photo 
+  def set_photo
+    if !params[:photo_id].nil?
     @photo = Photo.find_by(id: params[:photo_id])
+    end
   end
 
   def set_collection
