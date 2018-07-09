@@ -19,5 +19,15 @@ class User < ApplicationRecord
   def username
     self.email.gsub(/(@)(.*?)$/, "").capitalize
   end
+
+  def self.users_by_photo_count
+    User.joins(:photos).select("users.*, count(photos.id) as photo_count").group('users.id').order("photo_count DESC")
+  end
+
+
+  def self.most_active_user
+    User.users_by_photo_count.first 
+  end
+
     
 end
