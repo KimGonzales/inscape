@@ -5,7 +5,7 @@ Inscape is a social photo sharing web application built with Ruby on Rails.
 This is intended to have a community managed database and social network. 
 Users are encouraged to upload photos that aim to inspire mindfulness, innovation and self development. 
 
-The Photo with the most ammount of comments is considered the top photo at said time.
+The Photo with the most amount of comments is considered the top photo at said time.
 
 ## Installation 
 
