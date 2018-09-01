@@ -6,7 +6,7 @@
 
 
 <div class="col-md-6 col-md-offset-3">
-  <div class="transitions-enabled masonry" id="photos">
+  <div class="transitions-enabled masonry photos">
     <% @photos.each do |photo| %>
         <div class="box panel panel-default">
           <%= link_to (image_tag photo.image.url), photo %>

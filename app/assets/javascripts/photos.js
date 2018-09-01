@@ -1,5 +1,5 @@
 $(function(){  
-  $('#photos').masonry({
+  $('.photos').masonry({
     itemSelector: '.box',
     columnWidth: 200,
     isAnimated: !Modernizr.csstransitions,
