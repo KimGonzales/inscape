@@ -2,7 +2,8 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def show
-    @photos = @profile.photos.order('created_at DESC')
+    render json: @profile
+    # @photos = @profile.photos.order('created_at DESC')
   end
 
   def edit
