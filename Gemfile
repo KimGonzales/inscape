@@ -22,6 +22,7 @@ gem 'omniauth-facebook', '~> 5.0'
 gem 'dotenv-rails', '~> 2.5'
 gem 'thin', '~> 1.7', '>= 1.7.2'
 gem 'jquery-turbolinks', '~> 2.1'
+gem 'active_model_serializers'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
