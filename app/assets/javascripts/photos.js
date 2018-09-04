@@ -5,7 +5,6 @@ $(function(){
     isAnimated: !Modernizr.csstransitions,
     isFitWidth: true
   });
-
 });
 
 $(function(){
