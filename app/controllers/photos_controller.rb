@@ -8,6 +8,7 @@ class PhotosController < ApplicationController
       @profile = Profile.find_by(id: params[:profile_id])
       @photos = @profile.photos.order("created_at DESC")
     end
+    render json: @profile
   end
 
   def show

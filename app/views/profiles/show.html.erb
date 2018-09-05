@@ -7,7 +7,19 @@
 
       <small><%= @profile.bio %></small><br>
       
-      <button type="button" class="btn btn-secondary btn-xs"><a href="#" class="js-get-photos" data-id="<%=@profile.id%>">All Photos</a></button>
+      <button type="button" class="btn btn-secondary btn-xs js-get-photos" data-id="<%=@profile.id%>">All Photos</button>
+
+      <script>
+      $(function(){
+          $(".js-get-photos").on("click", function(){
+            var id = $(this).data("id");
+            $.getJSON(`/profiles/${id}/photos`, function(data){
+              alert(data)
+            })
+          })
+        })
+      </script>
+
   </h3>
 </div>
 
