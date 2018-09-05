@@ -7,7 +7,7 @@
 
       <small><%= @profile.bio %></small><br>
       
-      <button type="button" class="btn btn-secondary btn-xs"><%= link_to "Every Moment", profile_photos_path(@profile), :data => {act:"load-photos"} %></button>
+      <button type="button" class="btn btn-secondary btn-xs"><a href="#" class="js-get-photos" data-id="<%=@profile.id%>">All Photos</a></button>
   </h3>
 </div>
 
@@ -27,3 +27,6 @@
 
   </div>
 </div >
+
+<div class="all-photos">
+</div>

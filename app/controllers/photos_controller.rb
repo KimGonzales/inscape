@@ -11,7 +11,8 @@ class PhotosController < ApplicationController
   end
 
   def show
-    # render json: @photo
+    binding.pry
+    render json: @photo
   end
 
   def new

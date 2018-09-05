@@ -1,11 +1,14 @@
-$(function(){
-  alert("page loaded!");
-  attachListener();
-})
+$(attachListener);
 
 
 function attachListener(){
-  let link = $("[data-act]");
-  debugger
-  console.log(link)
+  $(".js-get-photos").click((e) => getPhotos(e))
 }
+
+function getPhotos(e){
+  debugger
+  let id = e.data("id");
+  console.log(id)
+  debugger
+}
+
