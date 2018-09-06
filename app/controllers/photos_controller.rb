@@ -7,13 +7,11 @@ class PhotosController < ApplicationController
     else
       @profile = Profile.find_by(id: params[:profile_id])
       @photos = @profile.photos.order("created_at DESC")
-    end
-    render json: @profile
+      render json: @photos
+    end 
   end
 
   def show
-    binding.pry
-    render json: @photo
   end
 
   def new
