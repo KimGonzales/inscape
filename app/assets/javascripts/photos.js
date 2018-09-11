@@ -20,6 +20,9 @@ function getPhotos(e){
 
 function appendPhotos(jsonPhotos){
   console.log(jsonPhotos);
+  jsonPhotos.forEach(photoData => {
+    let photo = new photo(photData);
+  })
 //   receives the response data from the getPhotos function
 // iterates through json photodata to 
 // 1. make a new photo (passing it to photo constructor), 
@@ -29,10 +32,11 @@ function appendPhotos(jsonPhotos){
 }
 
 class photo {
-  constructor(title, description, image_url){
-    this.title = title;
-    this.description = description
-    this.image_url = image_url
+  constructor(photoData){
+    this.id = photoData["id"];
+    this.title = photoData["title"];
+    this.description = photoData["description"]
+    this.image = photoData["image"];
   }
 
   //formatPhotosLi() - function that formats the photos. perhaps use a template
