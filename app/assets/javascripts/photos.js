@@ -13,8 +13,6 @@ function getPhotos(e){
   fetch(`/profiles/${id}/photos`)
     .then(response => response.json())
     .then(data => appendPhotos(data));
-  //fetch the photo data
-  // pass the photo data to appendPhotos(data)
 }
 
 
@@ -26,12 +24,6 @@ function appendPhotos(jsonPhotos){
     let photosUl = document.getElementById("all-photos-div");
     photosUl.innerHTML += photo.formatPhotoAsLi();
   })
-//   receives the response data from the getPhotos function
-// iterates through json photodata to 
-// 1. make a new photo (passing it to photo constructor), 
-// 2. Gets the photosList on the profile index page and stores it in a variable (document.getElementbyId('photosList'))
-// 3. passes the newly instantiated javascript photo objects to the formatPhotoasLi() and appends 
-//    each formatted photo to the photosList on the user profile show page
 }
 
 class Photo{
@@ -45,6 +37,6 @@ class Photo{
     return `<div class="box panel panel-default">
     <img src=${this.image}>
     </div>`
+    //restyle me
   }
-  //formatPhotosLi() - function that formats the photos. perhaps use a template
 }
