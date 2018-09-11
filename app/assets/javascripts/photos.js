@@ -1,0 +1,1 @@
+// load ajax on for photo show from photo index here. 
