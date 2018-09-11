@@ -31,3 +31,11 @@ function getPhotos(e){
 //     }
 //   }
 // }
+
+class photo {
+  constructor(title, description, image_url){
+    this.title = title;
+    this.description = description
+    this.image_url = image_url
+  }
+}
