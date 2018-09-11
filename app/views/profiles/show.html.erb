@@ -1,13 +1,13 @@
 <div class="page-header">
-  <h3><%= @profile.user.username %>     
+  <h3><%= @profile.user.username %><br>    
 
     <% if current_user.profile == @profile %>
         <button type="button" class="btn btn-secondary btn-xs"><%= link_to "Edit Bio", edit_profile_path %></button>
-    <% end %><br>
+    <% end %>
 
-      <small><%= @profile.bio %></small><br>
-      
-      <button type="button" class="btn btn-secondary btn-xs js-get-photos" data-id="<%=@profile.id%>">See <%= @profile.user.username%>'s Photos</button>
+      <button type="button" class="btn btn-secondary btn-xs js-get-photos" data-id="<%=@profile.id%>">See <%= @profile.user.username%>'s Photos</button><br>
+
+      <small class="bio-text"><%= @profile.bio %></small><br>
 
   </h3>
 </div>
