@@ -18,10 +18,13 @@ function getPhotos(e){
 }
 
 
+
 function appendPhotos(jsonPhotos){
   console.log(jsonPhotos);
   jsonPhotos.forEach(photoData => {
-    let photo = new photo(photData);
+    let photo = new Photo(photoData);
+    let photosUl = document.getElementById("all-photos-ul");
+    photosUl.innerHTML += photo.formatPhotoAsLi();
   })
 //   receives the response data from the getPhotos function
 // iterates through json photodata to 
@@ -31,13 +34,15 @@ function appendPhotos(jsonPhotos){
 //    each formatted photo to the photosList on the user profile show page
 }
 
-class photo {
+class Photo{
   constructor(photoData){
-    this.id = photoData["id"];
-    this.title = photoData["title"];
-    this.description = photoData["description"]
-    this.image = photoData["image"];
+    this.id = photoData.id;
+    this.title = photoData.title;
+    this.description = photoData.description;
+    this.image = photoData.image;
   }
-
+  formatPhotoAsLi(){
+    return `<li>${this.title}</li>`
+  }
   //formatPhotosLi() - function that formats the photos. perhaps use a template
 }
