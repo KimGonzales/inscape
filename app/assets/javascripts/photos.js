@@ -11,25 +11,17 @@ function getPhotos(e){
   e.preventDefault();
   let id = e.target.dataset["id"]
   console.log(id)
+  //fetch the photo data
+  // pass the photo data to appendPhotos(data)
 }
 
-// function getPhotos(){
-//   var id = this.event.target.dataset["id"];
-//   $.getJSON(`/profiles/${id}/photos`), function(data){
-//     debugger
-//     for (const key in data){
-//       let photoid = data[key]["id"];
-//       let photoTitle = data[key]["title"];
-//       let photoDescription = data[key]["description"];
-//       let photoImage = data[key]["description"];
-      
-//       console.log(photoid, photoTitle, photoDescription)
-//       let photoDiv = $(".all-photos")
-//       let title = document.createElement('h1');
-//       title.innerHTML = photoTitle;
-//       photoDiv.append(title);
-//     }
-//   }
+// function appendPhotos(){
+//   recieves the response data from the getPhotos function
+// iterates through json photodata to 
+// 1. make a new photo (passing it to photo constructor), 
+// 2. Gets the photosList on the profile index page and stores it in a variable (document.getElementbyId('photosList'))
+// 3. passes the newly instantiated javascript photo objects to the formatPhotoasLi() and appends 
+//    each formatted photo to the photosList on the user profile show page
 // }
 
 class photo {
@@ -38,4 +30,6 @@ class photo {
     this.description = description
     this.image_url = image_url
   }
+
+  //formatPhotoasLi() - function that formats
 }
