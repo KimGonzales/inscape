@@ -23,7 +23,7 @@ function appendPhotos(jsonPhotos){
   console.log(jsonPhotos);
   jsonPhotos.forEach(photoData => {
     let photo = new Photo(photoData);
-    let photosUl = document.getElementById("all-photos-ul");
+    let photosUl = document.getElementById("all-photos-div");
     photosUl.innerHTML += photo.formatPhotoAsLi();
   })
 //   receives the response data from the getPhotos function
@@ -42,7 +42,9 @@ class Photo{
     this.image = photoData.image;
   }
   formatPhotoAsLi(){
-    return `<li>${this.title}</li>`
+    return `<div class="box panel panel-default">
+    <img src=${this.image}>
+    </div>`
   }
   //formatPhotosLi() - function that formats the photos. perhaps use a template
 }
