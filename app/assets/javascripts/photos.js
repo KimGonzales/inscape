@@ -20,7 +20,7 @@ function getPhotos(e){
 
 function appendPhotos(jsonPhotos){
   console.log(jsonPhotos);
-//   recieves the response data from the getPhotos function
+//   receives the response data from the getPhotos function
 // iterates through json photodata to 
 // 1. make a new photo (passing it to photo constructor), 
 // 2. Gets the photosList on the profile index page and stores it in a variable (document.getElementbyId('photosList'))
