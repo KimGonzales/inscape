@@ -34,9 +34,7 @@ class Photo{
     this.image = photoData.image;
   }
   formatPhotoAsLi(){
-    return `<div class="box panel panel-default">
-    <img src=${this.image}>
-    </div>`
+    return `<img class="profile-photo" src=${this.image}>`
     //restyle me
   }
 }
