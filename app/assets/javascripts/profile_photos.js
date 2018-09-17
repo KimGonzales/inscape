@@ -15,8 +15,6 @@ function getPhotos(e){
     .then(data => appendPhotos(data));
 }
 
-
-
 function appendPhotos(jsonPhotos){
   console.log(jsonPhotos);
   jsonPhotos.forEach(photoData => {
