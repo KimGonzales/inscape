@@ -27,12 +27,13 @@ function appendPhotos(jsonPhotos){
 class Photo{
   constructor(photoData){
     this.id = photoData.id;
+    this.user_id = photoData.user.id;
     this.title = photoData.title;
     this.description = photoData.description;
     this.image = photoData.image;
   }
   formatPhotoAsLi(){
-    return `<a href='/photos/${this.id}'><img class="profile-photo" src=${this.image}></a>`
+    return `<a href='/profiles/${this.user_id}/photos/${this.id}'><img class="profile-photo" src=${this.image}></a>`
     //restyle me
   }
 }
