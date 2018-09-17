@@ -12,10 +12,10 @@ function getPhotos(e){
   let id = e.target.dataset["id"]
   fetch(`/profiles/${id}/photos`)
     .then(response => response.json())
-    .then(data => appendPhotos(data));
+    .then(data => appendPhotosAndHideFeatured(data));
 }
 
-function appendPhotos(jsonPhotos){
+function appendPhotosAndHideFeatured(jsonPhotos){
   console.log(jsonPhotos);
   $("#featured-photos").contents().hide();
   jsonPhotos.forEach(photoData => {
