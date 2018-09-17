@@ -34,7 +34,7 @@ class Photo{
     this.image = photoData.image;
   }
   formatPhotoAsLi(){
-    return `<img class="profile-photo" src=${this.image}>`
+    return `<a href='/photos/${this.id}'><img class="profile-photo" src=${this.image}></a>`
     //restyle me
   }
 }
