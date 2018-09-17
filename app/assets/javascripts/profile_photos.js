@@ -17,6 +17,7 @@ function getPhotos(e){
 
 function appendPhotos(jsonPhotos){
   console.log(jsonPhotos);
+  $("#featured-photos").contents().hide();
   jsonPhotos.forEach(photoData => {
     let photo = new Photo(photoData);
     let photosUl = document.getElementById("all-photos-div");
