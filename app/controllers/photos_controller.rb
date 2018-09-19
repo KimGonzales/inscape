@@ -12,6 +12,10 @@ class PhotosController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @photo }
+    end 
   end
 
   def new
@@ -50,11 +54,6 @@ class PhotosController < ApplicationController
   def top
     @top_photo = Photo.top_photo
     redirect_to @top_photo
-  end
-
-  def photo_data
-    @photo = Photo.find(params[:id])
-    render json: @photo.to_json
   end
 
   private
