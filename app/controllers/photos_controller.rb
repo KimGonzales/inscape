@@ -52,6 +52,11 @@ class PhotosController < ApplicationController
     redirect_to @top_photo
   end
 
+  def photo_data
+    @photo = Photo.find(params[:id])
+    render json: @photo.to_json
+  end
+
   private
 
     def photo_params

@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   get 'top-photo', to: 'photos#top', as: 'top'
 
+  get '/photos/:id/photo_data', to: 'photos#photo_data'
+
 end
