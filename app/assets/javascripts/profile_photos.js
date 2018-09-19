@@ -5,6 +5,8 @@ function(){
 
 function attachListeners(){
   $(".js-get-photos").click((e) => getPhotos(e));
+  $(".js-previous").click((e) => getPreviousPhoto(e));
+  $(".js-next").click((e) => getNextPhoto(e));
 }
 
 function getPhotos(e){
