@@ -34,6 +34,7 @@ class Photo{
     this.title = photoData.title;
     this.description = photoData.description;
     this.image = photoData.image;
+    this.created_at = photoData.created_at;
   }
   formatPhotoAsLi(){
     return `<a href='/profiles/${this.user_id}/photos/${this.id}'><img class="profile-photo" src=${this.image}></a>`
