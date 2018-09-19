@@ -9,10 +9,10 @@
 
 function getPreviousPhoto(e){
   e.preventDefault();
-  console.log("i'm in the getPreviousPhoto function");
-  let previousID = ParseInt($(".js-previous").attr("data-id")) - 1;
+  let previousID = parseInt($(".js-previous").attr("data-id")) - 1;
   $.getJSON(`/photos/${previousID}.json`, function(data){
     // grab the class for each attribute and set previous attributes for show page
+    console.log(data)
   })
 
 }
