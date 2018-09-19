@@ -11,7 +11,7 @@ function getPreviousPhoto(e){
   e.preventDefault();
   let previousID = parseInt($(".js-previous").attr("data-id")) - 1;
   $.getJSON(`/photos/${previousID}.json`, function(data){
-    setPreviousPhoto(data);
+    showPreviousPhoto(data);
     // $(".photoTitle").text(data["title"]);
     // $(".photoDescription").text(data["description"]);
     // $(".photoImage").attr("src", data["image"]);
@@ -19,7 +19,7 @@ function getPreviousPhoto(e){
 }
 
 
-function setPreviousPhoto(data){
+function showPreviousPhoto(data){
   $(".photoTitle").text(data["title"]);
   $(".photoDescription").text(data["description"]);
   $(".photoImage").attr("src", data["image"]);
