@@ -71,14 +71,15 @@ function getPreviousPhoto(e){
 }
 
 function showPreviousPhoto(data){
-  $(".photoTitle").text(data["title"]);
-  $(".photoDescription").text(data["description"]);
-  $(".photoDate").text(data["created_at"]);
-  $(".photoImage").attr("src", data["image"]);
-  $(".photoUserEmail").text(data["user"]["email"]);
-  $(".photoUserEmail").attr("href", `/profiles/${data["user"]["id"]}`);
-  $(".js-previous").attr("data-id", data["id"]);
-  $(".js-next").attr("data-id", data["id"]);
+  let previousPhoto = new Photo(data)
+  $(".photoTitle").text(previousPhoto.title);
+  $(".photoDescription").text(previousPhoto.description);
+  $(".photoDate").text(previousPhoto.created_at);
+  $(".photoImage").attr("src", previousPhoto.image);
+  $(".photoUserEmail").text(previousPhoto.user_email);
+  $(".photoUserEmail").attr("href", `/profiles/${previousPhoto.user_id}`);
+  $(".js-previous").attr("data-id", previousPhoto.id);
+  $(".js-next").attr("data-id", previousPhoto.id);
       /*  TODO
       - update time format
       - update comments link and count on show page
@@ -87,23 +88,12 @@ function showPreviousPhoto(data){
 }
 
 function getNextPhoto(e){
+  e.preventDefault();
   let nextID = parseInt($(".js-next").attr("data-id")) + 1;
   $.get(`/photos/${nextID}.json`, function(response){
     showNextPhoto(response);
   });
-  e.preventDefault();
 }
-
-// function showNextPhoto(response){
-//   $(".photoTitle").text(response["title"]);
-//   $(".photoDescription").text(response["description"]);
-//   $(".photoDate").text(response["created_at"]);
-//   $(".photoImage").attr("src", response["image"]);
-//   $(".photoUserEmail").text(response["user"]["email"]);
-//   $(".photoUserEmail").attr("href", `/profiles/${response["user"]["id"]}`);
-//   $(".js-next").attr("data-id", response["id"]);
-//   $(".js-previous").attr("data-id", response["id"]);
-// }
 
 function showNextPhoto(response){
   let nextPhoto = new Photo(response)
