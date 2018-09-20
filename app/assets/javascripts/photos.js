@@ -62,26 +62,13 @@ function appendPhotosAndHideFeatured(jsonPhotos){
 
 ///////////////////  REQ 2 RENDER NEXT & PREVIOUS PHOTO SHOW PAGE VIA JS,AMS AND JSON BACKEND  ////////////////////
 
-
-// load ajax on for photo show from photo index (root)
-
-// When I click a photo, the app makes a get request for that resource via jquery and AMS JSON backend
-// you might allow a user to sift through posts by clicking a 'Next button on the posts show page, with the next
-// post being fetched and rendered via Jquery/Ajax 
-
-//getPreviousPhoto(e));
-// getNextPhoto(e))
-
 function getPreviousPhoto(e){
   e.preventDefault();
   let previousID = parseInt($(".js-previous").attr("data-id")) - 1;
   $.get(`/photos/${previousID}.json`, function(photoData){
     showPreviousPhoto(photoData);
-  })
+  });
 }
-
-// Photo attrs include title, description, date, user email, comment count and link
-
 
 function showPreviousPhoto(data){
   $(".photoTitle").text(data["title"]);
@@ -90,7 +77,31 @@ function showPreviousPhoto(data){
   $(".photoImage").attr("src", data["image"]);
   $(".photoUserEmail").text(data["user"]["email"]);
   $(".photoUserEmail").attr("href", `/profiles/${data["user"]["id"]}`);
-
   $(".js-previous").attr("data-id", data["id"]);
+  $(".js-next").attr("data-id", data["id"]);
+      /*  TODO
+      - update time format
+      - update comments link and count on show page
+      - how can we update the edit/delete buttons on that show page?
+      */ 
+}
+
+function getNextPhoto(e){
+  let nextID = parseInt($(".js-next").attr("data-id")) + 1;
+  $.get(`/photos/${nextID}.json`, function(response){
+    showNextPhoto(response);
+  });
+  e.preventDefault();
+}
+
+function showNextPhoto(response){
+  $(".photoTitle").text(response["title"]);
+  $(".photoDescription").text(response["description"]);
+  $(".photoDate").text(response["created_at"]);
+  $(".photoImage").attr("src", response["image"]);
+  $(".photoUserEmail").text(response["user"]["email"]);
+  $(".photoUserEmail").attr("href", `/profiles/${response["user"]["id"]}`);
+  $(".js-next").attr("data-id", response["id"]);
+  $(".js-previous").attr("data-id", response["id"]);
 }
 
