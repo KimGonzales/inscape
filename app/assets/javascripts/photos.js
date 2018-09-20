@@ -1,31 +1,17 @@
+////////////////////////////    ATTACH LISTENERS ON PAGE LOAD   /////////////////////////////
+
 $(document).on('turbolinks:load',
 function(){
   attachListeners();
 })
 
 function attachListeners(){
-  $(".js-get-photos").click((e) => getPhotos(e));
+  $(".js-get-photos").click((e) => getProfilePhotos(e));
   $(".js-previous").click((e) => getPreviousPhoto(e));
   $(".js-next").click((e) => getNextPhoto(e));
 }
 
-function getPhotos(e){
-  e.preventDefault();
-  let id = e.target.dataset["id"]
-  fetch(`/profiles/${id}/photos`)
-    .then(response => response.json())
-    .then(data => appendPhotosAndHideFeatured(data));
-}
-
-function appendPhotosAndHideFeatured(jsonPhotos){
-  console.log(jsonPhotos);
-  $("#featured-photos").contents().hide();
-  jsonPhotos.forEach(photoData => {
-    let photo = new Photo(photoData);
-    let photosUl = document.getElementById("all-photos-div");
-    photosUl.innerHTML += photo.formatPhotoAsLi();
-  })
-}
+///////////////////////////////  Javascript Model Objects  ///////////////////////////
 
 class Photo{
   constructor(photoData){
@@ -41,6 +27,30 @@ class Photo{
     //restyle me
   }
 }
+
+
+///////// GET PROFILE PHOTOS INDEX FUNCTIONS //////////////////////////
+
+
+function getProfilePhotos(e){
+  e.preventDefault();
+  let id = e.target.dataset["id"]
+  fetch(`/profiles/${id}/photos`)
+    .then(response => response.json())
+    .then(data => appendPhotosAndHideFeatured(data));
+}
+
+function appendPhotosAndHideFeatured(jsonPhotos){
+  $("#featured-photos").contents().hide();
+  jsonPhotos.forEach(photoData => {
+    let photo = new Photo(photoData);
+    let photosUl = document.getElementById("all-photos-div");
+    photosUl.innerHTML += photo.formatPhotoAsLi();
+  })
+}
+
+
+
 
 
 // load ajax on for photo show from photo index (root)
