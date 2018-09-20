@@ -20,7 +20,7 @@
     <% @photos.each do |photo| %>
       <% if photo.featured? %>
         <div class="box panel panel-default">
-          <%= link_to (image_tag photo.image.url), photo_path(photo) %>
+          <%= link_to (image_tag photo.image.url), profile_photo_path(photo.user.profile.id, photo) %>
           <h2><%= link_to photo.title, photo %></h2>
           <p><%= photo_date(photo) %></p>
         </div>
