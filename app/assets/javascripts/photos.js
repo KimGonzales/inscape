@@ -23,12 +23,13 @@ class Photo{
   constructor(photoData){
     this.id = photoData.id;
     this.user_id = photoData.user.id;
+    this.user_email = photoData.user.email;
     this.title = photoData.title;
     this.description = photoData.description;
     this.image = photoData.image;
     this.created_at = photoData.created_at;
   }
-  formatPhotoForProfilePage(){
+  formatProfilePhoto(){
     return `<div class="box panel panel-default">
       <a href='/profiles/${this.user_id}/photos/${this.id}'><img class="profile-photo" src=${this.image}></a>
       <h2><a href="/profiles/${this.user_id}/photos/{this.id}.html">${this.title}</a></h2>
@@ -38,7 +39,7 @@ class Photo{
 }
 
 
-///////// GET PROFILE PHOTOS INDEX FUNCTIONS //////////////////////////
+///////// REQ 1 GET PROFILE PHOTOS INDEX FUNCTIONS //////////////////////////
 
 
 function getProfilePhotos(e){
@@ -54,12 +55,12 @@ function appendPhotosAndHideFeatured(jsonPhotos){
   jsonPhotos.forEach(photoData => {
     let photo = new Photo(photoData);
     let photosUl = document.getElementById("all-photos-div");
-    photosUl.innerHTML += photo.formatPhotoForProfilePage();
+    photosUl.innerHTML += photo.formatProfilePhoto();
   })
 }
 
 
-
+///////////////////  REQ 2 RENDER NEXT & PREVIOUS PHOTO SHOW PAGE VIA JS,AMS AND JSON BACKEND  ////////////////////
 
 
 // load ajax on for photo show from photo index (root)
@@ -74,16 +75,22 @@ function appendPhotosAndHideFeatured(jsonPhotos){
 function getPreviousPhoto(e){
   e.preventDefault();
   let previousID = parseInt($(".js-previous").attr("data-id")) - 1;
-  $.getJSON(`/photos/${previousID}.json`, function(data){
-    showPreviousPhoto(data);
+  $.get(`/photos/${previousID}.json`, function(photoData){
+    showPreviousPhoto(photoData);
   })
 }
+
+// Photo attrs include title, description, date, user email, comment count and link
 
 
 function showPreviousPhoto(data){
   $(".photoTitle").text(data["title"]);
   $(".photoDescription").text(data["description"]);
+  $(".photoDate").text(data["created_at"]);
   $(".photoImage").attr("src", data["image"]);
-  console.log(data["created_at"])
+  $(".photoUserEmail").text(data["user"]["email"]);
+  $(".photoUserEmail").attr("href", `/profiles/${data["user"]["id"]}`);
+
+  $(".js-previous").attr("data-id", data["id"]);
 }
 
