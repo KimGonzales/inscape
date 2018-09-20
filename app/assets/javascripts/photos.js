@@ -94,14 +94,26 @@ function getNextPhoto(e){
   e.preventDefault();
 }
 
+// function showNextPhoto(response){
+//   $(".photoTitle").text(response["title"]);
+//   $(".photoDescription").text(response["description"]);
+//   $(".photoDate").text(response["created_at"]);
+//   $(".photoImage").attr("src", response["image"]);
+//   $(".photoUserEmail").text(response["user"]["email"]);
+//   $(".photoUserEmail").attr("href", `/profiles/${response["user"]["id"]}`);
+//   $(".js-next").attr("data-id", response["id"]);
+//   $(".js-previous").attr("data-id", response["id"]);
+// }
+
 function showNextPhoto(response){
-  $(".photoTitle").text(response["title"]);
-  $(".photoDescription").text(response["description"]);
-  $(".photoDate").text(response["created_at"]);
-  $(".photoImage").attr("src", response["image"]);
-  $(".photoUserEmail").text(response["user"]["email"]);
-  $(".photoUserEmail").attr("href", `/profiles/${response["user"]["id"]}`);
-  $(".js-next").attr("data-id", response["id"]);
-  $(".js-previous").attr("data-id", response["id"]);
+  let nextPhoto = new Photo(response)
+  $(".photoTitle").text(nextPhoto.title);
+  $(".photoDescription").text(nextPhoto.description);
+  $(".photoDate").text(nextPhoto.created_at);
+  $(".photoImage").attr("src", nextPhoto.image);
+  $(".photoUserEmail").text(nextPhoto.user_email);
+  $(".photoUserEmail").attr("href", `/profiles/${nextPhoto.user_id}`);
+  $(".js-next").attr("data-id", nextPhoto.id);
+  $(".js-previous").attr("data-id", nextPhoto.id);
 }
 
