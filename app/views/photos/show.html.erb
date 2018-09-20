@@ -16,8 +16,8 @@
         <div class="row">
 
           <div class="col-md-6">
-            <p class="photoUserEmail">by <%= link_to @photo.user.email, profile_path(@photo.user.profile) %></p>
-            <p class="photoComments"><%= link_to "#{@photo.comments.count} Comments", photo_comments_path(@photo) %></p>
+            <p>by <%= link_to @photo.user.email, profile_path(@photo.user.profile), :class => "photoUserEmail" %></p>
+            <p><%= link_to "#{@photo.comments.count} Comments", photo_comments_path(@photo), :class => "photoComments" %></p>
           </div>
 
           <div class="col-md-6">
