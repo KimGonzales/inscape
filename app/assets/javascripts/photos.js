@@ -24,12 +24,9 @@ class Photo{
   }
   formatPhotoAsLi(){
     return `<div class="box panel panel-default">
-      <a href='/profiles/${this.user_id}/photos/${this.id}'>
-        <img class="profile-photo" src=${this.image}>
-      </a>
+      <a href='/profiles/${this.user_id}/photos/${this.id}'><img class="profile-photo" src=${this.image}></a>
       <h2><a href="/profiles/${this.user_id}/photos/{this.id}.html">${this.title}</a></h2>
       </div>`
-    //restyle me
   }
 }
 
