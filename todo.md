@@ -11,4 +11,3 @@ On each user profile page I want to render that User's photos using JQuery. The 
   - [x] WE want one endpoint to make one request and get back structured data representing each profile's photos / each photos comments. 
 
 
-# Use AJAX / JQUERY and AMS JSON Backend to render photo show page and allow a user to sift through posts by clicking 'Next' with the photo being fetched and rendered via JQuery/Ajax
