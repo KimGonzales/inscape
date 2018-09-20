@@ -13,6 +13,12 @@ function attachListeners(){
 
 ///////////////////////////////  Javascript Model Objects  ///////////////////////////
 
+/* HOISTING 
+  An important difference between function declarations and class declarations is that function
+  declarations are hoisted and class declarations are not. You first need to declare your class and then access it, 
+  otherwise you will get a reference error. 
+*/
+
 class Photo{
   constructor(photoData){
     this.id = photoData.id;
@@ -22,10 +28,11 @@ class Photo{
     this.image = photoData.image;
     this.created_at = photoData.created_at;
   }
-  formatPhotoAsLi(){
+  formatPhotoForProfilePage(){
     return `<div class="box panel panel-default">
       <a href='/profiles/${this.user_id}/photos/${this.id}'><img class="profile-photo" src=${this.image}></a>
       <h2><a href="/profiles/${this.user_id}/photos/{this.id}.html">${this.title}</a></h2>
+      <p>${this.created_at}</p>
       </div>`
   }
 }
@@ -47,7 +54,7 @@ function appendPhotosAndHideFeatured(jsonPhotos){
   jsonPhotos.forEach(photoData => {
     let photo = new Photo(photoData);
     let photosUl = document.getElementById("all-photos-div");
-    photosUl.innerHTML += photo.formatPhotoAsLi();
+    photosUl.innerHTML += photo.formatPhotoForProfilePage();
   })
 }
 
