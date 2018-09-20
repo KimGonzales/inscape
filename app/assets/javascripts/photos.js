@@ -27,7 +27,7 @@ class Photo{
       <a href='/profiles/${this.user_id}/photos/${this.id}'>
         <img class="profile-photo" src=${this.image}>
       </a>
-      <h2>${this.title}</h2>
+      <h2><a href="/profiles/${this.user_id}/photos/{this.id}.html">${this.title}</a></h2>
       </div>`
     //restyle me
   }
