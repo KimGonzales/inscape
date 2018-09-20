@@ -23,7 +23,12 @@ class Photo{
     this.created_at = photoData.created_at;
   }
   formatPhotoAsLi(){
-    return `<a href='/profiles/${this.user_id}/photos/${this.id}'><img class="profile-photo" src=${this.image}></a>`
+    return `<div class="box panel panel-default">
+      <a href='/profiles/${this.user_id}/photos/${this.id}'>
+        <img class="profile-photo" src=${this.image}>
+      </a>
+      <h2>${this.title}</h2>
+      </div>`
     //restyle me
   }
 }

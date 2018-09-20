@@ -5,7 +5,7 @@
         <button type="button" class="btn btn-secondary btn-xs"><%= link_to "Edit Bio", edit_profile_path %></button>
     <% end %>
 
-      <button type="button" class="btn btn-secondary btn-xs js-get-photos" data-id="<%=@profile.id%>">See <%= @profile.user.username%>'s Photos</button><br>
+      <button type="button" class="btn btn-secondary btn-xs js-get-photos" data-id="<%=@profile.id%>">All <%= @profile.user.username%>'s Photos</button><br>
 
       <small class="bio-text"><%= @profile.bio %></small><br>
 
@@ -13,7 +13,7 @@
 </div>
 
 <div class="col-md-12">
-  <div id="all-photos-div">
+  <div id="all-photos-div" class="rtl transitions-enabled photos">
 
   </div>
 </div>
