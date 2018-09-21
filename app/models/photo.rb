@@ -2,6 +2,8 @@ class Photo < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
 
+  attr :formatted_date
+
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates :image, :title, :description, presence: true
@@ -30,6 +32,10 @@ class Photo < ApplicationRecord
 
   def self.top_photo
     Photo.photos_by_comment_count.first
+  end
+
+  def formatted_date
+    self.created_at.strftime("%b %d, %Y")
   end
 
 end
