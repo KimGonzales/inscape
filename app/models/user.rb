@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :comments
 
   after_create :create_profile
+
+  attr :username
  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers =>[:facebook]
