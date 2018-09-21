@@ -27,7 +27,7 @@ class Photo{
     this.title = photoData.title;
     this.description = photoData.description;
     this.image = photoData.image;
-    this.created_at = photoData.created_at;
+    this.formatted_date = photoData.formatted_date;
   }
 
   formatProfilePhoto(){
@@ -35,14 +35,14 @@ class Photo{
       <a href='/profiles/${this.user_id}/photos/${this.id}'>
         <img class="profile-photo" src=${this.image}></a>
       <h2><a href="/profiles/${this.user_id}/photos/{this.id}.html">${this.title}</a></h2>
-      <p>${this.created_at}</p>
+      <p>${this.formatted_date}</p>
       </div>`
   }
 
   displayPhotoData(){
     $(".photoTitle").text(this.title);
     $(".photoDescription").text(this.description);
-    $(".photoDate").text(this.created_at);
+    $(".photoDate").text(this.formatted_date);
     $(".photoImage").attr("src", this.image);
     $(".photoUserEmail").text(this.user_email);
     $(".photoUserEmail").attr("href", `/profiles/${this.user_id}`);
