@@ -32,13 +32,14 @@ class Photo{
 
   formatProfilePhoto(){
     return `<div class="box panel panel-default">
-      <a href='/profiles/${this.user_id}/photos/${this.id}'><img class="profile-photo" src=${this.image}></a>
+      <a href='/profiles/${this.user_id}/photos/${this.id}'>
+        <img class="profile-photo" src=${this.image}></a>
       <h2><a href="/profiles/${this.user_id}/photos/{this.id}.html">${this.title}</a></h2>
       <p>${this.created_at}</p>
       </div>`
   }
 
-  renderNextOrPreviousPhoto(){
+  displayPhotoData(){
     $(".photoTitle").text(this.title);
     $(".photoDescription").text(this.description);
     $(".photoDate").text(this.created_at);
@@ -47,6 +48,11 @@ class Photo{
     $(".photoUserEmail").attr("href", `/profiles/${this.user_id}`);
     $(".js-previous").attr("data-id", this.id);
     $(".js-next").attr("data-id", this.id);
+         /*  TODO
+      - update time format
+      - update comments link and count on show page
+      - how can we update the edit/delete buttons on that show page?
+      */ 
   } 
 }
 
@@ -75,45 +81,24 @@ function getPreviousPhoto(e){
   e.preventDefault();
   let previousID = parseInt($(".js-previous").attr("data-id")) - 1;
   $.get(`/photos/${previousID}.json`, function(photoData){
-    showPreviousPhoto(photoData);
+    createPreviousPhoto(photoData);
   });
 }
 
-function showPreviousPhoto(data){
+function createPreviousPhoto(data){
   let previousPhoto = new Photo(data);
-  previousPhoto.renderNextOrPreviousPhoto();
-  // $(".photoTitle").text(previousPhoto.title);
-  // $(".photoDescription").text(previousPhoto.description);
-  // $(".photoDate").text(previousPhoto.created_at);
-  // $(".photoImage").attr("src", previousPhoto.image);
-  // $(".photoUserEmail").text(previousPhoto.user_email);
-  // $(".photoUserEmail").attr("href", `/profiles/${previousPhoto.user_id}`);
-  // $(".js-previous").attr("data-id", previousPhoto.id);
-  // $(".js-next").attr("data-id", previousPhoto.id);
-      /*  TODO
-      - update time format
-      - update comments link and count on show page
-      - how can we update the edit/delete buttons on that show page?
-      */ 
+  previousPhoto.displayPhotoData();
 }
 
 function getNextPhoto(e){
   e.preventDefault();
   let nextID = parseInt($(".js-next").attr("data-id")) + 1;
   $.get(`/photos/${nextID}.json`, function(response){
-    showNextPhoto(response);
+    createNextPhoto(response);
   });
 }
 
-function showNextPhoto(response){
+function createNextPhoto(response){
   let nextPhoto = new Photo(response)
-  nextPhoto.renderNextOrPreviousPhoto();
-  // $(".photoTitle").text(nextPhoto.title);
-  // $(".photoDescription").text(nextPhoto.description);
-  // $(".photoDate").text(nextPhoto.created_at);
-  // $(".photoImage").attr("src", nextPhoto.image);
-  // $(".photoUserEmail").text(nextPhoto.user_email);
-  // $(".photoUserEmail").attr("href", `/profiles/${nextPhoto.user_id}`);
-  // $(".js-next").attr("data-id", nextPhoto.id);
-  // $(".js-previous").attr("data-id", nextPhoto.id);
+  nextPhoto.displayPhotoData();
 }
