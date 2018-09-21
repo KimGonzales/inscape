@@ -74,15 +74,18 @@ function getProfilePhotos(e){
 //     photosUl.innerHTML += photo.formatProfilePhoto();
 //   })
 // }
+
 function appendPhotosAndHideFeatured(jsonPhotos){
   if ($("#all-photos-div").is(':empty')){
     $("#featured-photos").contents().hide();
-    jsonPhotos.forEach(photoData => {
-      let photo = new Photo(photoData);
-      let photosUl = document.getElementById("all-photos-div");
-      photosUl.innerHTML += photo.formatProfilePhoto();
-    })} else {
+    $(".js-get-photos").text("Featured Photos");
+      jsonPhotos.forEach(photoData => {
+        let photo = new Photo(photoData);
+        let photosUl = document.getElementById("all-photos-div");
+        photosUl.innerHTML += photo.formatProfilePhoto();
+      })} else {
       $("#featured-photos").contents().show();
+      $(".js-get-photos").text("All Photos")
       $("#all-photos-div").html('');
     }
 }
