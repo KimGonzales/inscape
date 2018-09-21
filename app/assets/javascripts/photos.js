@@ -29,6 +29,7 @@ class Photo{
     this.image = photoData.image;
     this.created_at = photoData.created_at;
   }
+
   formatProfilePhoto(){
     return `<div class="box panel panel-default">
       <a href='/profiles/${this.user_id}/photos/${this.id}'><img class="profile-photo" src=${this.image}></a>
@@ -36,11 +37,20 @@ class Photo{
       <p>${this.created_at}</p>
       </div>`
   }
+
+  renderNextOrPreviousPhoto(){
+    $(".photoTitle").text(this.title);
+    $(".photoDescription").text(this.description);
+    $(".photoDate").text(this.created_at);
+    $(".photoImage").attr("src", this.image);
+    $(".photoUserEmail").text(this.user_email);
+    $(".photoUserEmail").attr("href", `/profiles/${this.user_id}`);
+    $(".js-previous").attr("data-id", this.id);
+    $(".js-next").attr("data-id", this.id);
+  } 
 }
 
-
 ///////// REQ 1 GET PROFILE PHOTOS INDEX FUNCTIONS //////////////////////////
-
 
 function getProfilePhotos(e){
   e.preventDefault();
@@ -59,8 +69,7 @@ function appendPhotosAndHideFeatured(jsonPhotos){
   })
 }
 
-
-///////////////////  REQ 2 RENDER NEXT & PREVIOUS PHOTO SHOW PAGE VIA JS,AMS AND JSON BACKEND  ////////////////////
+///////////////////  REQ 2 RENDER NEXT & PREVIOUS PHOTO SHOW PAGE VIA JS, AMS AND JSON BACKEND  ////////////////////
 
 function getPreviousPhoto(e){
   e.preventDefault();
@@ -71,15 +80,16 @@ function getPreviousPhoto(e){
 }
 
 function showPreviousPhoto(data){
-  let previousPhoto = new Photo(data)
-  $(".photoTitle").text(previousPhoto.title);
-  $(".photoDescription").text(previousPhoto.description);
-  $(".photoDate").text(previousPhoto.created_at);
-  $(".photoImage").attr("src", previousPhoto.image);
-  $(".photoUserEmail").text(previousPhoto.user_email);
-  $(".photoUserEmail").attr("href", `/profiles/${previousPhoto.user_id}`);
-  $(".js-previous").attr("data-id", previousPhoto.id);
-  $(".js-next").attr("data-id", previousPhoto.id);
+  let previousPhoto = new Photo(data);
+  previousPhoto.renderNextOrPreviousPhoto();
+  // $(".photoTitle").text(previousPhoto.title);
+  // $(".photoDescription").text(previousPhoto.description);
+  // $(".photoDate").text(previousPhoto.created_at);
+  // $(".photoImage").attr("src", previousPhoto.image);
+  // $(".photoUserEmail").text(previousPhoto.user_email);
+  // $(".photoUserEmail").attr("href", `/profiles/${previousPhoto.user_id}`);
+  // $(".js-previous").attr("data-id", previousPhoto.id);
+  // $(".js-next").attr("data-id", previousPhoto.id);
       /*  TODO
       - update time format
       - update comments link and count on show page
@@ -97,13 +107,13 @@ function getNextPhoto(e){
 
 function showNextPhoto(response){
   let nextPhoto = new Photo(response)
-  $(".photoTitle").text(nextPhoto.title);
-  $(".photoDescription").text(nextPhoto.description);
-  $(".photoDate").text(nextPhoto.created_at);
-  $(".photoImage").attr("src", nextPhoto.image);
-  $(".photoUserEmail").text(nextPhoto.user_email);
-  $(".photoUserEmail").attr("href", `/profiles/${nextPhoto.user_id}`);
-  $(".js-next").attr("data-id", nextPhoto.id);
-  $(".js-previous").attr("data-id", nextPhoto.id);
+  nextPhoto.renderNextOrPreviousPhoto();
+  // $(".photoTitle").text(nextPhoto.title);
+  // $(".photoDescription").text(nextPhoto.description);
+  // $(".photoDate").text(nextPhoto.created_at);
+  // $(".photoImage").attr("src", nextPhoto.image);
+  // $(".photoUserEmail").text(nextPhoto.user_email);
+  // $(".photoUserEmail").attr("href", `/profiles/${nextPhoto.user_id}`);
+  // $(".js-next").attr("data-id", nextPhoto.id);
+  // $(".js-previous").attr("data-id", nextPhoto.id);
 }
-
