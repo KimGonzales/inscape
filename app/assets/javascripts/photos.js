@@ -66,13 +66,25 @@ function getProfilePhotos(e){
     .then(data => appendPhotosAndHideFeatured(data));
 }
 
+// function appendPhotosAndHideFeatured(jsonPhotos){
+//   $("#featured-photos").contents().hide();
+//   jsonPhotos.forEach(photoData => {
+//     let photo = new Photo(photoData);
+//     let photosUl = document.getElementById("all-photos-div");
+//     photosUl.innerHTML += photo.formatProfilePhoto();
+//   })
+// }
 function appendPhotosAndHideFeatured(jsonPhotos){
-  $("#featured-photos").contents().hide();
-  jsonPhotos.forEach(photoData => {
-    let photo = new Photo(photoData);
-    let photosUl = document.getElementById("all-photos-div");
-    photosUl.innerHTML += photo.formatProfilePhoto();
-  })
+  if ($("#all-photos-div").is(':empty')){
+    $("#featured-photos").contents().hide();
+    jsonPhotos.forEach(photoData => {
+      let photo = new Photo(photoData);
+      let photosUl = document.getElementById("all-photos-div");
+      photosUl.innerHTML += photo.formatProfilePhoto();
+    })} else {
+      $("#featured-photos").contents().show();
+      $("#all-photos-div").html('');
+    }
 }
 
 ///////////////////  REQ 2 RENDER NEXT & PREVIOUS PHOTO SHOW PAGE VIA JS, AMS AND JSON BACKEND  ////////////////////
