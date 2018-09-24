@@ -88,7 +88,7 @@ class Photo{
 
 function getProfilePhotos(e){
   e.preventDefault();
-  let id = e.target.dataset["id"]
+  const id = e.target.dataset["id"]
   fetch(`/profiles/${id}/photos`)
     .then(response => response.json())
     .then(data => appendPhotosAndHideFeatured(data));
@@ -100,12 +100,12 @@ function appendPhotosAndHideFeatured(jsonPhotos){
     $(".js-get-photos").text("Featured Photos");
       jsonPhotos.forEach(photoData => {
         let photo = new Photo(photoData);
-        let photosUl = document.getElementById("all-photos-div");
-        photosUl.innerHTML += photo.formatProfilePhoto();
-      })} else {
-      $("#featured-photos").contents().show();
-      $(".js-get-photos").text("All Photos")
-      $("#all-photos-div").html('');
+        $("#all-photos-div").append(photo.formatProfilePhoto());
+      });
+  } else {
+    $("#featured-photos").contents().show();
+    $(".js-get-photos").text("All Photos")
+    $("#all-photos-div").html('');
     }
 }
 
