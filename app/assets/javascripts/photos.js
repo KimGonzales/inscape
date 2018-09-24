@@ -15,9 +15,11 @@ function attachListeners(){
   $(".js-get-photos").click((e) => getProfilePhotos(e));
   $(".js-previous").click((e) => getPreviousPhoto(e));
   $(".js-next").click((e) => getNextPhoto(e));
+  $(".photoComments").click((e) => getPhotoComments(e));
 }
 
 ///////////////////////////////  Javascript Model Objects  ///////////////////////////
+
 class Comment{
   constructor(commentData){
     this.id = commentData.id;
@@ -25,8 +27,10 @@ class Comment{
     this.user_id = commentData.user.id;
     this.user_email = commentData.user.email;
   }
-
-  // formatComment
+  
+  formatHtml(){
+    return `<p> ${this.content}</p>`
+  }
 }
 
 class Photo{
@@ -38,8 +42,9 @@ class Photo{
     this.description = photoData.description;
     this.image = photoData.image;
     this.formatted_date = photoData.formatted_date;
-    this.comments = photoData.comments.map((commentData) =>{
+    this.comments = photoData.comments.map((commentData) => {
       const comment = new Comment(commentData);
+      return comment
     })
   }
 
@@ -68,6 +73,8 @@ class Photo{
       */ 
   } 
 }
+
+
 
 
 
@@ -122,4 +129,19 @@ function getNextPhoto(e){
 function createNextPhoto(response){
   let nextPhoto = new Photo(response)
   nextPhoto.displayPhotoData();
+}
+
+
+/////////////////// REQ 3 DYNAMICALLY RENDERS A HAS_MANY RELATIONSHIP: PHOTO HAS MANY COMMENTS ////////////////////#endregion
+
+function getPhotoComments(e){
+  e.preventDefault();
+  $.getJSON(`/photos/${e.target.dataset.id}.json`, function(photoData){
+    const photo = new Photo(photoData);
+    const photoComments = photo.comments;
+    debugger
+    photoComments.forEach(comment => {
+      console.log(comment);
+    })
+  })
 }

@@ -20,6 +20,11 @@
             <p><%= link_to "#{@photo.comments.count} Comments", photo_comments_path(@photo), :class => "photoComments", :"data-id" => "#{@photo.id}"  %></p>
           </div>
 
+          <div class="js-show-comments">
+          </div>
+
+          
+
           <div class="col-md-6">
             <div class="btn-group pull-right">
               <% if user_signed_in? && current_user.photos.include?(@photo) %>
