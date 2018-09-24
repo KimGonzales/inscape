@@ -1,3 +1,9 @@
+/* HOISTING 
+  An important difference between function declarations and class declarations is that function
+  declarations are hoisted and class declarations are not. You first need to declare your class and then access it, 
+  otherwise you will get a reference error. 
+*/
+
 ////////////////////////////    ATTACH LISTENERS ON PAGE LOAD   /////////////////////////////
 
 $(document).on('turbolinks:load',
@@ -12,12 +18,16 @@ function attachListeners(){
 }
 
 ///////////////////////////////  Javascript Model Objects  ///////////////////////////
+class Comment{
+  constructor(commentData){
+    this.id = commentData.id;
+    this.content = commentData.content;
+    this.user_id = commentData.user.id;
+    this.user_email = commentData.user.email;
+  }
 
-/* HOISTING 
-  An important difference between function declarations and class declarations is that function
-  declarations are hoisted and class declarations are not. You first need to declare your class and then access it, 
-  otherwise you will get a reference error. 
-*/
+  // formatComment
+}
 
 class Photo{
   constructor(photoData){
@@ -28,6 +38,9 @@ class Photo{
     this.description = photoData.description;
     this.image = photoData.image;
     this.formatted_date = photoData.formatted_date;
+    this.comments = photoData.comments.map((commentData) =>{
+      const comment = new Comment(commentData);
+    })
   }
 
   formatProfilePhoto(){
@@ -49,12 +62,13 @@ class Photo{
     $(".js-previous").attr("data-id", this.id);
     $(".js-next").attr("data-id", this.id);
          /*  TODO
-      - update time format
       - update comments link and count on show page
       - how can we update the edit/delete buttons on that show page?
       */ 
   } 
 }
+
+
 
 ///////// REQ 1 GET PROFILE PHOTOS INDEX FUNCTIONS //////////////////////////
 
@@ -65,15 +79,6 @@ function getProfilePhotos(e){
     .then(response => response.json())
     .then(data => appendPhotosAndHideFeatured(data));
 }
-
-// function appendPhotosAndHideFeatured(jsonPhotos){
-//   $("#featured-photos").contents().hide();
-//   jsonPhotos.forEach(photoData => {
-//     let photo = new Photo(photoData);
-//     let photosUl = document.getElementById("all-photos-div");
-//     photosUl.innerHTML += photo.formatProfilePhoto();
-//   })
-// }
 
 function appendPhotosAndHideFeatured(jsonPhotos){
   if ($("#all-photos-div").is(':empty')){
