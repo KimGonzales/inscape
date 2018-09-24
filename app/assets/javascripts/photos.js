@@ -139,7 +139,6 @@ function getPhotoComments(e){
   $.getJSON(`/photos/${e.target.dataset.id}.json`, function(photoData){
     const photo = new Photo(photoData);
     const photoComments = photo.comments;
-    debugger
     photoComments.forEach(comment => {
       console.log(comment);
     })
