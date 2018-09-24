@@ -61,6 +61,7 @@ class Photo{
     $(".photoUserEmail").attr("href", `/profiles/${this.user_id}`);
     $(".js-previous").attr("data-id", this.id);
     $(".js-next").attr("data-id", this.id);
+    $(".photoComments").attr("data-id", this.id);
          /*  TODO
       - update comments link and count on show page
       - how can we update the edit/delete buttons on that show page?
