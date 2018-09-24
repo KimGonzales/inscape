@@ -25,10 +25,12 @@ class Comment{
     this.id = commentData.id;
     this.content = commentData.content;
     this.user_id = commentData.user.id;
+    this.username = commentData.comment_username;
     this.user_email = commentData.user.email;
   }
   
-  formatHtml(){
+  //each comment
+  formatComment(){
     return `<p> ${this.content}</p>`
   }
 }
@@ -71,7 +73,14 @@ class Photo{
       - update comments link and count on show page
       - how can we update the edit/delete buttons on that show page?
       */ 
-  } 
+  }
+
+  formatPhotoComments(){
+    return `<h3>${this.comments.length} Comments: </h3>
+     ${this.comments.map(comment =>{
+        return comment.formatComment();
+     })}`
+  }
 }
 
 
@@ -138,9 +147,7 @@ function getPhotoComments(e){
   e.preventDefault();
   $.getJSON(`/photos/${e.target.dataset.id}.json`, function(photoData){
     const photo = new Photo(photoData);
-    const photoComments = photo.comments;
-    photoComments.forEach(comment => {
-      console.log(comment);
-    })
+    let formattedComments = photo.formatPhotoComments();
+    $(".js-show-comments").append(formattedComments);
   })
 }
