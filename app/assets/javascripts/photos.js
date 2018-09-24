@@ -18,7 +18,7 @@ function attachListeners(){
   $(".photoComments").click((e) => getPhotoComments(e));
 }
 
-///////////////////////////////  Javascript Model Objects  ///////////////////////////
+///////////////////////////////  JAVASCRIPT MODEL OBJECTS  ///////////////////////////
 
 class Comment{
   constructor(commentData){
@@ -33,6 +33,7 @@ class Comment{
     return `<p><strong><a href="/profiles/${this.user_id}">${this.username}</a></strong>: ${this.content}</p><br>`
   }
 }
+
 
 class Photo{
   constructor(photoData){
@@ -70,10 +71,6 @@ class Photo{
     $(".js-next").attr("data-id", this.id);
     $(".photoComments").attr("data-id", this.id);
     $(".photoComments").text(`${this.comments.length} Comments`)
-         /*  TODO
-      - update comments link and count on show page
-      - how can we update the edit/delete buttons on that show page?
-      */ 
   }
 
   formatPhotoComments(){
@@ -84,7 +81,8 @@ class Photo{
   }
 }
 
-///////// REQ 1 GET PROFILE PHOTOS INDEX FUNCTIONS //////////////////////////
+
+//////////////////         REQ 1 GET PROFILE PHOTOS INDEX FUNCTIONS     //////////////////////////
 
 function getProfilePhotos(e){
   e.preventDefault();
@@ -109,7 +107,7 @@ function appendPhotosAndHideFeatured(jsonPhotos){
     }
 }
 
-///////////////////  REQ 2 RENDER NEXT & PREVIOUS PHOTO SHOW PAGE VIA JS, AMS AND JSON BACKEND  ////////////////////
+/////////////  REQ 2 RENDER NEXT & PREVIOUS PHOTO SHOW PAGE VIA JS, AMS AND JSON BACKEND  ////////////
 
 function getPreviousPhoto(e){
   e.preventDefault();
@@ -138,7 +136,7 @@ function createNextPhoto(response){
 }
 
 
-/////////////////// REQ 3 DYNAMICALLY RENDERS A HAS_MANY RELATIONSHIP: PHOTO HAS MANY COMMENTS ////////////////////#endregion
+/////////////////// REQ 3 DYNAMICALLY RENDERS A HAS_MANY RELATIONSHIP: PHOTO HAS MANY COMMENTS ////////////////////
 
 function getPhotoComments(e){
   e.preventDefault();
@@ -148,3 +146,5 @@ function getPhotoComments(e){
     $(".js-show-comments").append(formattedComments);
   })
 }
+
+/////////////////// REQ 4 RENDER A FORM FOR CREATING A RESOURCE THAT SUBMITS DYNAMICALLY
