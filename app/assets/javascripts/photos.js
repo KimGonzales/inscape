@@ -31,7 +31,7 @@ class Comment{
   
   //each comment
   formatComment(){
-    return `<p> ${this.content}</p>`
+    return `<p><strong><a href="/profiles/${this.user_id}">${this.username}</a></strong>: ${this.content}</p><br>`
   }
 }
 
@@ -46,7 +46,7 @@ class Photo{
     this.formatted_date = photoData.formatted_date;
     this.comments = photoData.comments.map((commentData) => {
       const comment = new Comment(commentData);
-      return comment
+      return comment;
     })
   }
 
@@ -76,16 +76,12 @@ class Photo{
   }
 
   formatPhotoComments(){
-    return `<h3>${this.comments.length} Comments: </h3>
-     ${this.comments.map(comment =>{
+     return `<h3> ${this.comments.length} Comments: </h3><br>
+     ${this.comments.map((comment) => {
         return comment.formatComment();
-     })}`
+     }).join('')}`
   }
 }
-
-
-
-
 
 ///////// REQ 1 GET PROFILE PHOTOS INDEX FUNCTIONS //////////////////////////
 

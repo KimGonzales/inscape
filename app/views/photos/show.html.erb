@@ -18,13 +18,9 @@
           <div class="col-md-6">
             <p>by <%= link_to @photo.user.email, profile_path(@photo.user.profile), :class => "photoUserEmail" %></p>
             <p><%= link_to "#{@photo.comments.count} Comments", photo_comments_path(@photo), :class => "photoComments", :"data-id" => "#{@photo.id}"  %></p>
-          </div>
+          </div><br>
 
-          <div class="js-show-comments comments">
-
-
-          </div>
-
+          <div class="js-show-comments comments"></div>
 
 
           <div class="col-md-6">
