@@ -29,7 +29,6 @@ class Comment{
     this.user_email = commentData.user.email;
   }
   
-  //each comment
   formatComment(){
     return `<p><strong><a href="/profiles/${this.user_id}">${this.username}</a></strong>: ${this.content}</p><br>`
   }
@@ -60,6 +59,7 @@ class Photo{
   }
 
   displayPhotoData(){
+    $(".js-show-comments").empty();
     $(".photoTitle").text(this.title);
     $(".photoDescription").text(this.description);
     $(".photoDate").text(this.formatted_date);
@@ -69,6 +69,7 @@ class Photo{
     $(".js-previous").attr("data-id", this.id);
     $(".js-next").attr("data-id", this.id);
     $(".photoComments").attr("data-id", this.id);
+    $(".photoComments").text(`${this.comments.length} Comments`)
          /*  TODO
       - update comments link and count on show page
       - how can we update the edit/delete buttons on that show page?
