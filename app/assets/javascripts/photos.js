@@ -134,7 +134,6 @@ function createNextPhoto(response){
   nextPhoto.displayPhotoData();
 }
 
-
 /////////////////// REQ 3 DYNAMICALLY RENDERS A HAS_MANY RELATIONSHIP: PHOTO HAS MANY COMMENTS ////////////////////
 
 function getPhotoComments(e){
