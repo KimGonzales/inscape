@@ -23,8 +23,8 @@
           <div class="js-show-comments comments"></div>
 
           <%= form_for ([@photo, @photo.comments.build]) do |f| %>
-            <p><%= f.text_area :content %></p>
-            <p><%= f.submit %></p>
+            <p><%= f.text_area :content, :class => "form-control" %></p><br>
+            <%= f.submit :class => "btn-info" %>
           <% end %>
 
           <div class="col-md-6">
