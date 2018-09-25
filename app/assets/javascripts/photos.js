@@ -142,6 +142,7 @@ function getPhotoComments(e){
     const photo = new Photo(photoData);
     let formattedComments = photo.formatPhotoComments();
     $(".js-show-comments").append(formattedComments);
+    $(".js-show-comments").load('views/comments/index.html');
   })
 }
 

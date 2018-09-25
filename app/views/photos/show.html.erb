@@ -22,6 +22,10 @@
 
           <div class="js-show-comments comments"></div>
 
+          <%= form_for ([@photo, @photo.comments.build]) do |f| %>
+            <p><%= f.text_area :content %></p>
+            <p><%= f.submit %></p>
+          <% end %>
 
           <div class="col-md-6">
             <div class="btn-group pull-right">
