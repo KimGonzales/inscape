@@ -61,14 +61,14 @@ class Photo{
 
   displayPhotoData(){
     $(".js-show-comments").empty();
+    $(".js-previous").attr("data-id", this.id);
+    $(".js-next").attr("data-id", this.id);
     $(".photoTitle").text(this.title);
     $(".photoDescription").text(this.description);
     $(".photoDate").text(this.formatted_date);
     $(".photoImage").attr("src", this.image);
     $(".photoUserEmail").text(this.user_email);
     $(".photoUserEmail").attr("href", `/profiles/${this.user_id}`);
-    $(".js-previous").attr("data-id", this.id);
-    $(".js-next").attr("data-id", this.id);
     $(".photoComments").attr("data-id", this.id);
     $(".photoComments").text(`${this.comments.length} Comments`)
   }
@@ -80,7 +80,6 @@ class Photo{
      }).join('')}`
   }
 }
-
 
 //////////////////         REQ 1 GET PROFILE PHOTOS INDEX FUNCTIONS     //////////////////////////
 
