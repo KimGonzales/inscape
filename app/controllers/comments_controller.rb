@@ -3,23 +3,27 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
 
   def index
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @photo.comments.all, status: 200 }
+    end 
+  end
+
+  def create
+    @comment = @photo.comments.build(comment_params)
+    render json: @comment, status: 201
   end
 
   # def create
-  #   @comment = @photo.comments.build(comment_params)
-  #   render json: @comment, status: 201
-  # end
-
-  def old_create
-    comment = @photo.comments.build(comment_params)
-    comment.user = current_user
+  #   comment = @photo.comments.build(comment_params)
+  #   comment.user = current_user
     
-    if comment.save
-      redirect_to photo_comments_path(comment.photo)
-    else
-      render 'index'
-    end
-  end
+  #   if comment.save
+  #     redirect_to photo_comments_path(comment.photo)
+  #   else
+  #     render 'index'
+  #   end
+  # end
 
   def edit
   end
