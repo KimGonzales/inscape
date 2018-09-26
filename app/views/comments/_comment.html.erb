@@ -1,4 +1,4 @@
-<p class="comment_user"><strong><%= link_to comment.user.username, profile_path(comment.user.profile) %>: </strong>
+<p class="comment_user"><strong><%= link_to comment.user.email, profile_path(comment.user.profile) %>: </strong>
   <%= comment.content %></p>
 
 <div class="comment_time">Posted <%= time_ago_in_words(comment.created_at)%> ago

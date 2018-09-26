@@ -26,12 +26,11 @@ class Comment{
     this.id = commentData.id;
     this.content = commentData.content;
     this.user_id = commentData.user.id;
-    this.username = commentData.comment_username;
     this.user_email = commentData.user.email;
   }
   
   formatComment(){
-    return `<p><strong><a href="/profiles/${this.user_id}">${this.username}</a></strong>: ${this.content}</p><br>`
+    return `<p><strong><a href="/profiles/${this.user_id}">${this.user_email}</a></strong>: ${this.content}</p><br>`
   }
 }
 
@@ -143,7 +142,7 @@ function getPhotoComments(e){
     const photo = new Photo(photoData);
     let formattedComments = photo.formatPhotoComments();
     $(".js-show-comments").append(formattedComments);
-    $(".js-show-comments").load('views/comments/index.html');
+    // $(".js-show-comments").load('views/comments/index.html');
   })
 }
 
@@ -159,6 +158,7 @@ function sendFormData(e){
   let details = $(".new_comment").serialize();
   let photo_id = parseInt($(".js-next").attr("data-id"))
   $.post(`/photos/${photo_id}/comments`, details, function(data){
-    console.log(data);
+    let newComment = new Comment(data);
+    $(".js-show-comments").append(newComment.formatComment())
   })
 }
