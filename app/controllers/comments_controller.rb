@@ -5,7 +5,12 @@ class CommentsController < ApplicationController
   def index
   end
 
-  def create
+  # def create
+  #   @comment = @photo.comments.build(comment_params)
+  #   render json: @comment, status: 201
+  # end
+
+  def old_create
     comment = @photo.comments.build(comment_params)
     comment.user = current_user
     

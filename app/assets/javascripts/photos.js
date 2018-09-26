@@ -16,6 +16,7 @@ function attachListeners(){
   $(".js-previous").click((e) => getPreviousPhoto(e));
   $(".js-next").click((e) => getNextPhoto(e));
   $(".photoComments").click((e) => getPhotoComments(e));
+  $("form.new_comment").submit((e)=> sendFormData(e));
 }
 
 ///////////////////////////////  JAVASCRIPT MODEL OBJECTS  ///////////////////////////
@@ -147,3 +148,21 @@ function getPhotoComments(e){
 }
 
 /////////////////// REQ 4 RENDER A FORM FOR CREATING A RESOURCE THAT SUBMITS DYNAMICALLY
+
+// hijack the submit event
+// prevent the default behavior 
+// use the action of that submit event as the url to POST to
+// make a POST request to the server using  serialized/stringified DATA from the form
+
+// function sendFormData(e){
+//   e.preventDefault();
+//   let url = this.action 
+//   console.log(url)
+
+//   let values = $(this).serialize();
+//   let photo_id = parseInt($(".js-previous").attr("data-id"));
+//   let posting = $.post(`/photos/${photo_id}/comments.json`, values);
+//   posting.done(function(data){
+//     console.log(data)
+//   })
+// }
