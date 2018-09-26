@@ -11,7 +11,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @photo.comments.build(comment_params)
-    render json: @comment, status: 201
+    @comment.user = current_user
+    if @comment.save
+      render json: @comment, status: 201
+    else
+      render 'index'
+    end
   end
 
   # def create

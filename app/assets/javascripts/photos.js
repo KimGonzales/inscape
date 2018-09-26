@@ -154,15 +154,11 @@ function getPhotoComments(e){
 // use the action of that submit event as the url to POST to
 // make a POST request to the server using  serialized/stringified DATA from the form
 
-// function sendFormData(e){
-//   e.preventDefault();
-//   let url = this.action 
-//   console.log(url)
-
-//   let values = $(this).serialize();
-//   let photo_id = parseInt($(".js-previous").attr("data-id"));
-//   let posting = $.post(`/photos/${photo_id}/comments.json`, values);
-//   posting.done(function(data){
-//     console.log(data)
-//   })
-// }
+function sendFormData(e){
+  e.preventDefault();
+  let details = $(".new_comment").serialize();
+  let photo_id = parseInt($(".js-next").attr("data-id"))
+  $.post(`/photos/${photo_id}/comments`, details, function(data){
+    console.log(data);
+  })
+}
