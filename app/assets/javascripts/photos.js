@@ -70,7 +70,9 @@ class Photo{
     $(".photoUserEmail").text(this.user_email);
     $(".photoUserEmail").attr("href", `/profiles/${this.user_id}`);
     $(".photoComments").attr("data-id", this.id);
-    $(".photoComments").text(`${this.comments.length} Comments`)
+    $(".photoComments").text(`${this.comments.length} Comments`);
+    resetCommentForm();
+
   }
 
   formatPhotoComments(){
@@ -143,7 +145,6 @@ function getPhotoComments(e){
     const photo = new Photo(photoData);
     let formattedComments = photo.formatPhotoComments();
     $(".js-show-comments").append(formattedComments);
-    // $(".js-show-comments").load('views/comments/index.html');
   })
 }
 
@@ -160,6 +161,12 @@ function sendFormData(e){
   let photo_id = parseInt($(".js-next").attr("data-id"))
   $.post(`/photos/${photo_id}/comments`, details, function(data){
     let newComment = new Comment(data);
-    $(".js-show-comments").append(newComment.formatComment())
-  })
+    $(".js-show-comments").append(newComment.formatComment());
+  });
+  $(".new_comment")[0].reset();
+}
+
+function resetCommentForm(){
+
+  $(".new_comment").css("display", "none");
 }
