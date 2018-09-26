@@ -138,6 +138,7 @@ function createNextPhoto(response){
 
 function getPhotoComments(e){
   e.preventDefault();
+  $('.new_comment').css("display", "block");
   $.getJSON(`/photos/${e.target.dataset.id}.json`, function(photoData){
     const photo = new Photo(photoData);
     let formattedComments = photo.formatPhotoComments();
