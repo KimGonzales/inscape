@@ -167,6 +167,5 @@ function sendFormData(e){
 }
 
 function resetCommentForm(){
-
   $(".new_comment").css("display", "none");
 }
