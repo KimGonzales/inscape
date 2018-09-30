@@ -162,10 +162,13 @@ function sendFormData(e){
   $.post(`/photos/${photo_id}/comments`, details, function(data){
     let newComment = new Comment(data);
     $(".js-show-comments").append(newComment.formatComment());
-  });
-  $(".new_comment")[0].reset();
+    $("#new_comment")[0][3].disabled = false;
+    $(".new_comment")[0].reset();
+  })
+  
+  
 }
 
 function resetCommentForm(){
-  $(".new_comment").css("display", "none");
+  $("form").css("display", "none");
 }
