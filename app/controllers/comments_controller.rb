@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
     end
   end
 
+  # // without jquery/js
   # def create
   #   comment = @photo.comments.build(comment_params)
   #   comment.user = current_user
