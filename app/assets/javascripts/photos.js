@@ -140,15 +140,10 @@ function getPhotoComments(e){
     const photo = new Photo(photoData);
     let formattedComments = photo.formatPhotoComments();
     $(".js-show-comments").append(formattedComments);
-  })
+  });
 }
 
 /////////////////// REQ 4 RENDER A FORM FOR CREATING A RESOURCE THAT SUBMITS DYNAMICALLY
-
-// hijack the submit event
-// prevent the default behavior 
-// use the action of that submit event as the url to POST to
-// make a POST request to the server using  serialized/stringified DATA from the form
 
 function sendFormData(e){
   e.preventDefault();
@@ -158,9 +153,7 @@ function sendFormData(e){
     let newComment = new Comment(data);
     $(".js-show-comments").append(newComment.formatComment());
     resetCommentForm();
-  })
-  
-  
+  });
 }
 
 function resetCommentForm(){
@@ -169,6 +162,6 @@ function resetCommentForm(){
 }
 
 function hideAndResetCommentForm(){
-    resetCommentForm();
-    $("form").css("display", "none");
+  resetCommentForm();
+  $("form").css("display", "none");
 }
