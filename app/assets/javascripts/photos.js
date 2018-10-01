@@ -19,7 +19,7 @@ function attachListeners(){
   $("form.new_comment").submit((e)=> sendFormData(e));
 }
 
-///////////////////////////////  JAVASCRIPT MODEL OBJECTS  ///////////////////////////
+///////////////////////////////  REQ 5 JAVASCRIPT MODEL OBJECTS  ///////////////////////////
 
 class Comment{
   constructor(commentData){
@@ -71,7 +71,7 @@ class Photo{
     $(".photoUserEmail").attr("href", `/profiles/${this.user_id}`);
     $(".photoComments").attr("data-id", this.id);
     $(".photoComments").text(`${this.comments.length} Comments`);
-    resetCommentForm();
+    hideAndResetCommentForm();
 
   }
 
@@ -162,13 +162,18 @@ function sendFormData(e){
   $.post(`/photos/${photo_id}/comments`, details, function(data){
     let newComment = new Comment(data);
     $(".js-show-comments").append(newComment.formatComment());
-    $("#new_comment")[0][3].disabled = false;
-    $(".new_comment")[0].reset();
+    resetCommentForm();
   })
   
   
 }
 
 function resetCommentForm(){
-  $("form").css("display", "none");
+  $("#new_comment")[0][3].disabled = false;
+  $("#new_comment")[0].reset();
+}
+
+function hideAndResetCommentForm(){
+    resetCommentForm();
+    $("form").css("display", "none");
 }
