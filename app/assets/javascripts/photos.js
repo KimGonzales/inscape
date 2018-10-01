@@ -114,26 +114,21 @@ function getPreviousPhoto(e){
   e.preventDefault();
   let previousID = parseInt($(".js-previous").attr("data-id")) - 1;
   $.get(`/photos/${previousID}.json`, function(photoData){
-    createPreviousPhoto(photoData);
+    createNextOrPreviousPhoto(photoData);
   });
-}
-
-function createPreviousPhoto(data){
-  let previousPhoto = new Photo(data);
-  previousPhoto.displayPhotoData();
 }
 
 function getNextPhoto(e){
   e.preventDefault();
   let nextID = parseInt($(".js-next").attr("data-id")) + 1;
-  $.get(`/photos/${nextID}.json`, function(response){
-    createNextPhoto(response);
+  $.get(`/photos/${nextID}.json`, function(photoData){
+    createNextOrPreviousPhoto(photoData);
   });
 }
 
-function createNextPhoto(response){
-  let nextPhoto = new Photo(response)
-  nextPhoto.displayPhotoData();
+function createNextOrPreviousPhoto(photoData){
+  let photo = new Photo(photoData);
+  photo.displayPhotoData();
 }
 
 /////////////////// REQ 3 DYNAMICALLY RENDERS A HAS_MANY RELATIONSHIP: PHOTO HAS MANY COMMENTS ////////////////////
