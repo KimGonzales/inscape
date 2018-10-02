@@ -16,7 +16,7 @@ function attachListeners(){
   $(".js-previous").click((e) => getPreviousPhoto(e));
   $(".js-next").click((e) => getNextPhoto(e));
   $(".photoComments").click((e) => getPhotoComments(e));
-  $("form.new_comment").submit((e)=> sendFormData(e));
+  $("form.new_comment").submit((e)=> makeNewComment(e));
 }
 
 ///////////////////////////////  REQ 5 JAVASCRIPT MODEL OBJECTS  ///////////////////////////
@@ -90,7 +90,8 @@ function getProfilePhotos(e){
   const id = e.target.dataset["id"]
   fetch(`/profiles/${id}/photos`)
     .then(response => response.json())
-    .then(data => appendPhotosAndHideFeatured(data));
+    .then(data => appendPhotosAndHideFeatured(data))
+    .catch(error => document.html(`${error.message} route not found`))
 }
 
 function appendPhotosAndHideFeatured(jsonPhotos){
@@ -145,7 +146,7 @@ function getPhotoComments(e){
 
 /////////////////// REQ 4 RENDER A FORM FOR CREATING A RESOURCE THAT SUBMITS DYNAMICALLY
 
-function sendFormData(e){
+function makeNewComment(e){
   e.preventDefault();
   let details = $(".new_comment").serialize();
   let photo_id = parseInt($(".js-next").attr("data-id"))
