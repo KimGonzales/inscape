@@ -168,7 +168,7 @@ function hideAndResetCommentForm(){
   $("form").css("display", "none");
 }
 
-///////////////////// MAKE TOP COMMENTS PHOTO ON PROFILE PAGE
+///////////////////// LIVE CODE: MAKE TOP COMMENTS PHOTO ON PROFILE PAGE     //////////////////////////
 
 function orderByCommentCount(e){
   e.preventDefault();
