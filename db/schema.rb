@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_07_03_164332) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "photo_id"
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 2018_07_03_164332) do
     t.integer "user_id"
     t.string "image_file_name"
     t.string "image_content_type"
-    t.integer "image_file_size"
+    t.bigint "image_file_size"
     t.datetime "image_updated_at"
     t.integer "featured_status", default: 1
   end
