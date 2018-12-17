@@ -86,6 +86,8 @@ class Photo{
 
 //////////////////         REQ 1 GET PROFILE PHOTOS INDEX FUNCTIONS     //////////////////////////
 
+
+// TODO: Change fetch request to use jquery get/post line 94
 function getProfilePhotos(e){
   e.preventDefault();
   const id = e.target.dataset["id"]
@@ -166,27 +168,4 @@ function resetCommentForm(){
 function hideAndResetCommentForm(){
   resetCommentForm();
   $("form").css("display", "none");
-}
-
-///////////////////// LIVE CODE: MAKE TOP COMMENTS PHOTO ON PROFILE PAGE     //////////////////////////
-
-function orderByCommentCount(e){
-  e.preventDefault();
-  const id = e.target.dataset["id"]
-  fetch(`/profiles/${id}/photos`)
-    .then(response => response.json())
-    .then(data => sortAndMakePhotos(data))
-}
-
-function sortAndMakePhotos(photoData){
-  let photos = photoData.map(photoDetail => {
-    let photo = new Photo(photoDetail);
-    return photo;
-  })
-  let sortedPhotos = photos.sort(function(a,b){
-    return b.comments.length - a.comments.length;
-  })
-  sortedPhotos.forEach(photo => {
-    $(".photos-sorted-by-comment").append(photo.formatProfilePhoto());
-  })
 }
