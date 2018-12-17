@@ -19,18 +19,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # // without jquery/js
-  # def create
-  #   comment = @photo.comments.build(comment_params)
-  #   comment.user = current_user
-    
-  #   if comment.save
-  #     redirect_to photo_comments_path(comment.photo)
-  #   else
-  #     render 'index'
-  #   end
-  # end
-
   def edit
   end
 
