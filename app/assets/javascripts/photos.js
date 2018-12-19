@@ -1,7 +1,6 @@
 /* HOISTING 
   An important difference between function declarations and class declarations is that function
-  declarations are hoisted and class declarations are not. You first need to declare your class and then access it, 
-  otherwise you will get a reference error. 
+  declarations are hoisted and class declarations are not.
 */
 
 ////////////////////////////    ATTACH LISTENERS ON PAGE LOAD   /////////////////////////////
@@ -147,7 +146,7 @@ function getPhotoComments(e){
   });
 }
 
-/////////////////// REQ 4 RENDER A FORM FOR CREATING A RESOURCE THAT SUBMITS DYNAMICALLY
+/////////////////// REQ 4 RENDER A FORM FOR CREATING A RESOURCE THAT SUBMITS DYNAMICALLY ///////////////////////////
 
 function makeNewComment(e){
   e.preventDefault();
