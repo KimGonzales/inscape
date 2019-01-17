@@ -51,12 +51,14 @@ class Photo{
   }
 
   formatProfilePhoto(){
-    return `<div class="box panel panel-default">
-      <a href='/profiles/${this.user_id}/photos/${this.id}'>
+    return (
+      `<div class="box panel panel-default">
+        <a href='/profiles/${this.user_id}/photos/${this.id}'>
         <img class="profile-photo" src=${this.image}></a>
-      <h2><a href="/profiles/${this.user_id}/photos/{this.id}.html">${this.title}</a></h2>
-      <p>${this.formatted_date}</p>
+        <h2><a href="/profiles/${this.user_id}/photos/{this.id}.html">${this.title}</a></h2>
+        <p>${this.formatted_date}</p>
       </div>`
+      )
   }
 
   displayPhotoData(){
