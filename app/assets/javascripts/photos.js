@@ -152,9 +152,9 @@ function getPhotoComments(e){
 
 function makeNewComment(e){
   e.preventDefault();
-  let details = $(".new_comment").serialize();
+  let commentDetails = $(".new_comment").serialize();
   let photo_id = parseInt($(".js-next").attr("data-id"))
-  $.post(`/photos/${photo_id}/comments`, details, function(data){
+  $.post(`/photos/${photo_id}/comments`, commentDetails, function(data){
     let newComment = new Comment(data);
     $(".js-show-comments").append(newComment.formatComment());
     resetCommentForm();
